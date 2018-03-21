@@ -1,0 +1,20 @@
+<application>
+  <component name="ActionsCollector">
+    <counts>
+      <entry action="$Undo" count="1" />
+      <entry action="CheckinFiles" count="1" />
+      <entry action="CheckinProject" count="1" />
+      <entry action="EditorBackSpace" count="10" />
+      <entry action="EditorChooseLookupItem" count="2" />
+      <entry action="EditorDown" count="37" />
+      <entry action="EditorEnter" count="2" />
+      <entry action="EditorTab" count="5" />
+      <entry action="EditorUp" count="12" />
+      <entry action="Generate" count="1" />
+      <entry action="GuiDesigner.CreateListener" count="1" />
+      <entry action="NewDir" count="1" />
+      <entry action="NewForm" count="1" />
+      <entry action="Vcs.Push" count="2" />
+    </counts>
+  </component>
+</application>

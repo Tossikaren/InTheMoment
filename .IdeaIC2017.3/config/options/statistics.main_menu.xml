@@ -1,0 +1,9 @@
+<application>
+  <component name="MainMenuCollector">
+    <counts>
+      <entry path="VCS -&gt; Commit" count="1" />
+      <entry path="VCS -&gt; Git -&gt; Commit File" count="1" />
+      <entry path="VCS -&gt; Git -&gt; Push..." count="2" />
+    </counts>
+  </component>
+</application>

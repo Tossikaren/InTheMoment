@@ -1,0 +1,13 @@
+<application>
+  <component name="ShortcutsCollector">
+    <counts>
+      <entry shortcut="Alt+Insert" count="1" />
+      <entry shortcut="Backspace" count="10" />
+      <entry shortcut="Ctrl+Z" count="1" />
+      <entry shortcut="Down" count="37" />
+      <entry shortcut="Enter" count="4" />
+      <entry shortcut="Tab" count="5" />
+      <entry shortcut="Up" count="12" />
+    </counts>
+  </component>
+</application>
