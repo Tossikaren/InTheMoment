@@ -1,9 +1,23 @@
 <application>
   <component name="MainMenuCollector">
     <counts>
+      <entry path="Build -&gt; Build Project" count="2" />
+      <entry path="Build -&gt; Rebuild Project" count="1" />
+      <entry path="File -&gt; New -&gt; Module..." count="2" />
+      <entry path="File -&gt; New -&gt; Project..." count="6" />
+      <entry path="File -&gt; Open Recent -&gt; Reopen Project" count="3" />
+      <entry path="File -&gt; Open..." count="11" />
+      <entry path="File -&gt; Project Structure..." count="3" />
+      <entry path="File -&gt; Save All" count="1" />
+      <entry path="File -&gt; Settings..." count="1" />
+      <entry path="Run -&gt; Run" count="13" />
+      <entry path="Run -&gt; Run..." count="5" />
+      <entry path="VCS -&gt; Checkout from Version Control -&gt; GitHub" count="1" />
       <entry path="VCS -&gt; Commit" count="1" />
       <entry path="VCS -&gt; Git -&gt; Commit File" count="1" />
-      <entry path="VCS -&gt; Git -&gt; Push..." count="2" />
+      <entry path="VCS -&gt; Git -&gt; Push..." count="3" />
+      <entry path="VCS -&gt; Import into Version Control -&gt; Share Project on GitHub" count="1" />
+      <entry path="View -&gt; Tool Buttons" count="1" />
     </counts>
   </component>
 </application>
