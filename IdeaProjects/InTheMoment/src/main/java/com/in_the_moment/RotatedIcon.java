@@ -143,7 +143,7 @@ public class RotatedIcon implements Icon
      *  Set the Icon as circular or rectangular. Only used for Rotate.ABOUT_CENTER.
      *  When true, the icon width/height will not change as the Icon is rotated.
      *
-     *  @param true for a circular Icon, false otherwise
+     *  @param //true for a circular Icon, false otherwise
      */
     public void setCircularIcon(boolean circularIcon)
     {

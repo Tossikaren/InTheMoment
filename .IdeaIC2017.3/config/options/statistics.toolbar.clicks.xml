@@ -1,13 +1,14 @@
 <application>
   <component name="ToolbarClicksCollector">
     <counts>
-      <entry action="CompileDirty@NavBarToolbar" count="32" />
+      <entry action="CheckinProject@ChangesViewToolbar" count="1" />
+      <entry action="CompileDirty@NavBarToolbar" count="34" />
       <entry action="Maven.AddManagedFiles@Maven Navigator Toolbar" count="1" />
       <entry action="Maven.Reimport@Maven Navigator Toolbar" count="2" />
       <entry action="Maven.ShowSettings@Maven Navigator Toolbar" count="1" />
       <entry action="Print@RunnerToolbar" count="1" />
-      <entry action="Run@NavBarToolbar" count="75" />
-      <entry action="Stop@NavBarToolbar" count="1" />
+      <entry action="Run@NavBarToolbar" count="105" />
+      <entry action="Stop@NavBarToolbar" count="2" />
       <entry action="com.intellij.ide.browsers.actions.BaseWebBrowserAction@ContextToolbar" count="1" />
       <entry action="com.intellij.notification.EventLogToolWindowFactory$ToggleSoftWraps@EventLog" count="2" />
     </counts>
