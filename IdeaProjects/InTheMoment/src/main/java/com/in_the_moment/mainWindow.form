@@ -3,52 +3,68 @@
   <grid id="27dc6" binding="main_window_main_panel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="914" height="703"/>
+      <xy x="20" y="20" width="1014" height="974"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-1"/>
+      <foreground color="-1"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="36358" class="javax.swing.JTextField" binding="main_window_header">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="327" height="100"/>
+            <preferred-size width="327" height="100"/>
+            <maximum-size width="327" height="100"/>
           </grid>
         </constraints>
         <properties>
-          <background color="-786945"/>
+          <background color="-1"/>
+          <caretColor color="-786945"/>
           <editable value="false"/>
-          <font name="Freestyle Script" size="72" style="1"/>
+          <focusable value="false"/>
+          <font name="Snap ITC" size="36" style="0"/>
           <foreground color="-16777216"/>
           <horizontalAlignment value="0"/>
+          <selectedTextColor color="-786945"/>
           <text value="In The Moment"/>
+          <verifyInputWhenFocusTarget value="false"/>
         </properties>
       </component>
       <grid id="86aa0" binding="selected_image_panel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <minimum-size width="600" height="600"/>
+          <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="650" height="850"/>
+            <preferred-size width="650" height="850"/>
+            <maximum-size width="650" height="850"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-1"/>
+          <foreground color="-1"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="186dc" class="javax.swing.JLabel" binding="jlabel1">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Label"/>
+              <background color="-1"/>
+              <foreground color="-1"/>
+              <text value=""/>
             </properties>
           </component>
         </children>
       </grid>
       <scrollpane id="7ae8e" binding="thumbnail_scroll_vindow">
         <constraints>
-          <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <minimum-size width="300" height="600"/>
-            <preferred-size width="300" height="600"/>
-            <maximum-size width="300" height="-1"/>
+          <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="327" height="850"/>
+            <preferred-size width="327" height="850"/>
+            <maximum-size width="327" height="850"/>
           </grid>
         </constraints>
         <properties/>
@@ -57,7 +73,8 @@
           <component id="7f4d5" class="javax.swing.JList" binding="jlist1">
             <constraints/>
             <properties>
-              <layoutOrientation value="0"/>
+              <fixedCellHeight value="250"/>
+              <layoutOrientation value="2"/>
             </properties>
           </component>
         </children>

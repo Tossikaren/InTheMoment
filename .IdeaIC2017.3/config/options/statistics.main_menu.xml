@@ -3,6 +3,7 @@
     <counts>
       <entry path="Build -&gt; Build Project" count="2" />
       <entry path="Build -&gt; Rebuild Project" count="1" />
+      <entry path="Edit -&gt; Undo" count="1" />
       <entry path="File -&gt; New -&gt; Module..." count="2" />
       <entry path="File -&gt; New -&gt; Project..." count="6" />
       <entry path="File -&gt; Open Recent -&gt; Reopen Project" count="3" />
@@ -13,9 +14,9 @@
       <entry path="Run -&gt; Run" count="13" />
       <entry path="Run -&gt; Run..." count="5" />
       <entry path="VCS -&gt; Checkout from Version Control -&gt; GitHub" count="1" />
-      <entry path="VCS -&gt; Commit" count="1" />
+      <entry path="VCS -&gt; Commit" count="3" />
       <entry path="VCS -&gt; Git -&gt; Commit File" count="1" />
-      <entry path="VCS -&gt; Git -&gt; Push..." count="3" />
+      <entry path="VCS -&gt; Git -&gt; Push..." count="4" />
       <entry path="VCS -&gt; Import into Version Control -&gt; Share Project on GitHub" count="2" />
       <entry path="View -&gt; Tool Buttons" count="1" />
     </counts>
