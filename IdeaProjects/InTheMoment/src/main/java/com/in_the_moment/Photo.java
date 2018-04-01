@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 
 public class Photo {
     String ID;
-    String DateTime;
+    String dateTime;
 
     public Photo(String ID) {
         this.ID = ID;
@@ -20,12 +20,10 @@ public class Photo {
     }
 
     public String getDateTime() {
-        return DateTime;
+        return dateTime;
     }
 
     public void setDateTime(String dateTime) {
-        //DateTime = dateTime.replace("_000.jpg", "");;
-
         SimpleDateFormat fromUser = new SimpleDateFormat("yyyyMMdd_HHmmss");
         SimpleDateFormat myFormat = new SimpleDateFormat("HH:mm:ss-dd/MM/yyyy");
 
@@ -33,7 +31,7 @@ public class Photo {
 
             String reformattedStr = myFormat.format(fromUser.parse(dateTime.replace("_000.jpg", "")));
 
-            DateTime = reformattedStr;
+            this.dateTime = reformattedStr;
         } catch (ParseException e) {
             e.printStackTrace();
         }

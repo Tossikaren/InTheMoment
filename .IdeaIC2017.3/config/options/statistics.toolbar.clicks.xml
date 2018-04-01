@@ -3,13 +3,15 @@
     <counts>
       <entry action="CheckinProject@ChangesViewToolbar" count="2" />
       <entry action="CompileDirty@NavBarToolbar" count="35" />
-      <entry action="Debug@NavBarToolbar" count="1" />
+      <entry action="Coverage@NavBarToolbar" count="1" />
+      <entry action="Debug@NavBarToolbar" count="2" />
       <entry action="Maven.AddManagedFiles@Maven Navigator Toolbar" count="1" />
       <entry action="Maven.Reimport@Maven Navigator Toolbar" count="2" />
       <entry action="Maven.ShowSettings@Maven Navigator Toolbar" count="2" />
       <entry action="Print@RunnerToolbar" count="1" />
-      <entry action="Run@NavBarToolbar" count="205" />
+      <entry action="Run@NavBarToolbar" count="270" />
       <entry action="Stop@NavBarToolbar" count="3" />
+      <entry action="com.intellij.execution.ui.layout.actions.RestoreViewAction@DebuggerToolbar" count="1" />
       <entry action="com.intellij.ide.browsers.actions.BaseWebBrowserAction@ContextToolbar" count="1" />
       <entry action="com.intellij.notification.EventLogToolWindowFactory$ToggleSoftWraps@EventLog" count="2" />
     </counts>

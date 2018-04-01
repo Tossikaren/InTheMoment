@@ -1,17 +1,12 @@
 package com.in_the_moment;
 
-import org.apache.commons.io.IOUtils;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class CustomPhotoRenderer extends JLabel implements ListCellRenderer<Photo> {
 

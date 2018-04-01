@@ -12,7 +12,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainWindow {
     private JTextField main_window_header;
@@ -42,31 +45,72 @@ public class MainWindow {
         }
     };
 
-    public MainWindow(){
+    private MainWindow(){
 
-        DefaultListModel<GsrMeasurement> gsrMeasurementlistModel = new DefaultListModel<>();
+        // create list for GSR measurement objects
+        DefaultListModel<GsrMeasurement> gsrMeasurementListModel = new DefaultListModel<>();
 
-        try(FileInputStream inputStream = new FileInputStream("C:\\java_gsr_test\\EDA.csv")) {
+        /*try(FileInputStream inputStream = new FileInputStream("C:\\java_gsr_test\\EDA.csv")) {
             String everythingFromEdaFile = IOUtils.toString(inputStream);
             String timeStampPartOfStringUnixFormat = everythingFromEdaFile.substring(0, Math.min(10, everythingFromEdaFile.length()));
             java.util.Date timeStampDateObjectFormat =new java.util.Date((long)Integer.parseInt(timeStampPartOfStringUnixFormat)*1000);
-            
-            System.out.println(new SimpleDateFormat("HH:mm:ss-dd/MM/yyyy").format(timeStampDateObjectFormat));
+            System.out.println(new SimpleDateFormat("HH:mm:ss-dd/MM/yyyy").format(timeStampDateObjectFormat));*/
 
-            BufferedReader br = new BufferedReader(new FileReader("C:\\java_gsr_test\\EDA.csv"));
+        // read csv file with GSR measurements
+        try(BufferedReader br = new BufferedReader(new FileReader("C:\\java_gsr_test\\EDA.csv"))){
             String line;
-            //String csvSplitBy = ",";
-            while((line = br.readLine()) !=null){
-                //String[] testy = line.split(csvSplitBy);
 
-                GsrMeasurement gsrMeasurement = new GsrMeasurement(Double.parseDouble(line), timeStampDateObjectFormat);
-                gsrMeasurementlistModel.addElement(gsrMeasurement);
-                timeStampDateObjectFormat.setTime(timeStampDateObjectFormat.getTime() + 250);
-                System.out.println(new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy").format(timeStampDateObjectFormat));
+            // get unix timestamp from csv file
+            String timeStampPartOfStringUnixFormat = br.readLine();
+            System.out.println("Unix timestamp from csv file: " + timeStampPartOfStringUnixFormat);
+
+            // convert unix timestamp to java.util.date object
+            java.util.Date timeStampDateObjectFormat = new java.util.Date((long)Double.parseDouble(timeStampPartOfStringUnixFormat)*1000);
+            System.out.println("Unix timestamp converted to java.util.Date object: " + timeStampDateObjectFormat);
+
+            // get measurement frequency pr second from csv file
+            double frequency = Double.parseDouble(br.readLine());
+
+            int i = 0;
+
+            // loop through measurements in csv file
+            while((line = br.readLine()) !=null){
+
+                DateFormat dateTimeFormat = new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy");
+                String stringWithTimeStampDateObjectFormat = dateTimeFormat.format(timeStampDateObjectFormat);
+
+                //create measurement object and add it to list for GSR measurement objects
+                gsrMeasurementListModel.addElement(new GsrMeasurement(Double.parseDouble(line), stringWithTimeStampDateObjectFormat, i));
+
+                // increase timestamp with measurement frequency pr second (represented in milliseconds)
+                timeStampDateObjectFormat.setTime(timeStampDateObjectFormat.getTime() + 1000 / Math.round(frequency));
+                //System.out.println("Measurement timestamp In the Moment format: " + gsrMeasurementListModel.getElementAt(i).getMeasurement() + " " + new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy").format(gsrMeasurementListModel.getElementAt(i).getDateTime()) + " " + gsrMeasurementListModel.getElementAt(i).getI());
+
+                i++;
             }
         } catch (IOException e){
 
         }
+
+        try {
+            DateFormat dateTimeFormat = new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy");
+            Date date = dateTimeFormat.parse(gsrMeasurementListModel.firstElement().getDateTime());
+            System.out.println("Test java util: " + date);
+            System.out.println("Test dato format: " + new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy").format(date));
+        }catch (ParseException p) {
+        }
+
+
+        //gsrMeasurementListModel.remove(0);
+        for(int j = 0; j < 430;j++) {
+            //System.out.println("Measurement timestamp In the Moment format: " + gsrMeasurementListModel.getElementAt(j).getMeasurement() + " " + gsrMeasurementListModel.getElementAt(j).getDateTime());
+        }
+        // create list for highest GSR measurement objects
+        DefaultListModel<GsrMeasurement> highestGsrMeasurementListModel = new DefaultListModel<>();
+
+        //GsrMeasurement gsrMeasurement1 = new GsrMeasurement()
+        highestGsrMeasurementListModel.addElement(gsrMeasurementListModel.getElementAt(4));
+        System.out.println("First element from list with highest GSR measurements: " + highestGsrMeasurementListModel.firstElement().getMeasurement() + " " + highestGsrMeasurementListModel.firstElement().getDateTime() + " " + highestGsrMeasurementListModel.firstElement().getI());
 
         /*try (CSVReader reader = new CSVReader(new FileReader("C:\\java_gsr_test\\EDA.csv"))) {
             String [] nextLine;
@@ -84,9 +128,10 @@ public class MainWindow {
 
                     Photo newPhoto = new Photo(f.getName());
                     listModel.addElement(newPhoto);
-                    System.out.println(listModel.toString());
+                    //System.out.println(listModel.toString());
             }
         }
+
         //jlist1.setBorder(new EmptyBorder(10,10, 10, 10));
         jlist1.setModel(listModel);
         jlist1.setCellRenderer(new CustomPhotoRenderer());
