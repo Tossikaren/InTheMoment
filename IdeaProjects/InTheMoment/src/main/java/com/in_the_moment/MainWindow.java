@@ -1,6 +1,7 @@
 package com.in_the_moment;
 
 import com.opencsv.CSVReader;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import javax.imageio.ImageIO;
@@ -12,10 +13,16 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.channels.FileChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class MainWindow {
     private JTextField main_window_header;
@@ -26,6 +33,7 @@ public class MainWindow {
     private JList jlist1;
 
     static final File dir = new File("C:\\java_image_test");
+    static final File dir2 = new File("C:\\java_image_test\\new\\");
 
     // array of supported extensions (use a List if you prefer)
     static final String[] EXTENSIONS = new String[]{
@@ -49,12 +57,6 @@ public class MainWindow {
 
         // create list for GSR measurement objects
         DefaultListModel<GsrMeasurement> gsrMeasurementListModel = new DefaultListModel<>();
-
-        /*try(FileInputStream inputStream = new FileInputStream("C:\\java_gsr_test\\EDA.csv")) {
-            String everythingFromEdaFile = IOUtils.toString(inputStream);
-            String timeStampPartOfStringUnixFormat = everythingFromEdaFile.substring(0, Math.min(10, everythingFromEdaFile.length()));
-            java.util.Date timeStampDateObjectFormat =new java.util.Date((long)Integer.parseInt(timeStampPartOfStringUnixFormat)*1000);
-            System.out.println(new SimpleDateFormat("HH:mm:ss-dd/MM/yyyy").format(timeStampDateObjectFormat));*/
 
         // read csv file with GSR measurements
         try(BufferedReader br = new BufferedReader(new FileReader("C:\\java_gsr_test\\EDA.csv"))){
@@ -92,53 +94,84 @@ public class MainWindow {
 
         }
 
-        try {
-            DateFormat dateTimeFormat = new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy");
-            Date date = dateTimeFormat.parse(gsrMeasurementListModel.firstElement().getDateTime());
-            System.out.println("Test java util: " + date);
-            System.out.println("Test dato format: " + new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy").format(date));
-        }catch (ParseException p) {
-        }
-
-
-        //gsrMeasurementListModel.remove(0);
-        for(int j = 0; j < 430;j++) {
-            //System.out.println("Measurement timestamp In the Moment format: " + gsrMeasurementListModel.getElementAt(j).getMeasurement() + " " + gsrMeasurementListModel.getElementAt(j).getDateTime());
-        }
-        // create list for highest GSR measurement objects
-        DefaultListModel<GsrMeasurement> highestGsrMeasurementListModel = new DefaultListModel<>();
-
-        //GsrMeasurement gsrMeasurement1 = new GsrMeasurement()
-        highestGsrMeasurementListModel.addElement(gsrMeasurementListModel.getElementAt(4));
-        System.out.println("First element from list with highest GSR measurements: " + highestGsrMeasurementListModel.firstElement().getMeasurement() + " " + highestGsrMeasurementListModel.firstElement().getDateTime() + " " + highestGsrMeasurementListModel.firstElement().getI());
-
         /*try (CSVReader reader = new CSVReader(new FileReader("C:\\java_gsr_test\\EDA.csv"))) {
-            String [] nextLine;
-            while ((nextLine = reader.readNext()) != null) {
-                System.out.println(nextLine);
-            }
-        }catch (IOException e){
+                    String [] nextLine;
+                    while ((nextLine = reader.readNext()) != null) {
+                        System.out.println(nextLine);
+                    }
+                }catch (IOException e){
 
+                }*/
+
+        /*for(int j = 0; j < gsrMeasurementListModel.getSize();j++) {
+            System.out.println("Measurement timestamp In the Moment format: " + gsrMeasurementListModel.getElementAt(j).getMeasurement() + " " + gsrMeasurementListModel.getElementAt(j).getDateTime());
         }*/
 
-        DefaultListModel<Photo> listModel = new DefaultListModel<>();
+        DefaultListModel<Photo> photosInFolderListModel = new DefaultListModel<>();
 
         if (dir.isDirectory()) { // make sure it's a directory
             for (final File f : dir.listFiles(IMAGE_FILTER)) {
 
-                    Photo newPhoto = new Photo(f.getName());
-                    listModel.addElement(newPhoto);
-                    //System.out.println(listModel.toString());
+                    Photo newPhoto = new Photo(f.getName(), f.getName());
+                    photosInFolderListModel.addElement(newPhoto);
+                    //System.out.println(photosInFolderListModel.toString());
             }
         }
 
-        //jlist1.setBorder(new EmptyBorder(10,10, 10, 10));
-        jlist1.setModel(listModel);
+        // Create list with top 10 highest GSR measurements. Create list with timestamps from all photos from that day. Foreach GSR measurement on 10 highest GSR measurement list compare timestamp with timestamps from list of photos to find the photo which was taken closest to the measurement
+
+        // create list for highest GSR measurement objects
+        DefaultListModel<GsrMeasurement> highestGsrMeasurementListModel = new DefaultListModel<>();
+
+        highestGsrMeasurementListModel.addElement(gsrMeasurementListModel.getElementAt(4));
+        System.out.println("First element from list with highest GSR measurements: " + highestGsrMeasurementListModel.firstElement().getMeasurement() + " " + highestGsrMeasurementListModel.firstElement().getDateTime() + " " + highestGsrMeasurementListModel.firstElement().getI());
+
+        Photo currentClosest = null;
+        long smallestDifference = Math.abs(highestGsrMeasurementListModel.firstElement().getDateTime().getTime() - photosInFolderListModel.firstElement().getDateTime().getTime());
+        for (int j = 0;  j < highestGsrMeasurementListModel.getSize(); j++) {
+
+            for (int i = 0; i < photosInFolderListModel.getSize(); i++) {
+                //System.out.println("Highest: " + highestGsrMeasurementListModel.firstElement().getDateTime().getTime());
+                //System.out.println("The rest: " + photosInFolderListModel.getElementAt(i).getDateTime().getTime());
+                long currentDifference = Math.abs(highestGsrMeasurementListModel.getElementAt(j).getDateTime().getTime() - photosInFolderListModel.getElementAt(i).getDateTime().getTime());
+                System.out.println("Diff: " + currentDifference);
+
+                if (currentDifference < smallestDifference) {
+                    currentClosest = photosInFolderListModel.getElementAt(i);
+                    smallestDifference = currentDifference;
+                    System.out.println("Smallest difference: " + smallestDifference);
+                    System.out.println(currentClosest.getID() + " " + currentClosest.getDateTime());
+                }
+            }
+        }
+
+        Path finalPhoto = Paths.get("c:\\java_image_test\\" + currentClosest.getID());
+        Path finalPhotoMove = Paths.get("c:\\java_image_test\\new\\" + currentClosest.getID());
+        System.out.println("Final photo: " + finalPhoto);
+        System.out.println("Exists? " + Files.exists(finalPhoto));
+
+        try {
+            Files.copy(finalPhoto, finalPhotoMove, REPLACE_EXISTING);
+        }catch (IOException e){
+        }
+
+        DefaultListModel<Photo> photosInNewFolderListModel = new DefaultListModel<>();
+
+        if (dir2.isDirectory()) { // make sure it's a directory
+            for (final File fNew : dir2.listFiles(IMAGE_FILTER)) {
+
+                Photo newPhoto = new Photo(fNew.getName(), fNew.getName());
+                photosInNewFolderListModel.addElement(newPhoto);
+                System.out.println("New folder contents: " + photosInNewFolderListModel.toString());
+            }
+        }
+
+        jlist1.setModel(photosInNewFolderListModel);
         jlist1.setCellRenderer(new CustomPhotoRenderer());
 
         BufferedImage myImage;
         try {
-            myImage = ImageIO.read(new File("C:\\java_image_test\\" + listModel.firstElement().getID()));
+            myImage = ImageIO.read(new File("C:\\java_image_test\\new\\" + photosInNewFolderListModel.firstElement().getID()));
             ImageIcon myImageAsIcon = new ImageIcon (new ImageIcon(myImage).getImage().getScaledInstance(816, 612, Image.SCALE_DEFAULT));
             RotatedIcon rotatedImageIcon = new RotatedIcon(myImageAsIcon, RotatedIcon.Rotate.UP);
             jlabel1.setIcon(rotatedImageIcon);
@@ -154,14 +187,13 @@ public class MainWindow {
                     BufferedImage myImage;
 
                     try {
-                        myImage = ImageIO.read(new File("C:\\java_image_test\\" + selectedItem.getID()));
+                        myImage = ImageIO.read(new File("C:\\java_image_test\\new\\" + selectedItem.getID()));
                         ImageIcon myImageAsIcon = new ImageIcon (new ImageIcon(myImage).getImage().getScaledInstance(816, 612, Image.SCALE_DEFAULT));
                         RotatedIcon rotatedImageIcon = new RotatedIcon(myImageAsIcon, RotatedIcon.Rotate.UP);
                         jlabel1.setIcon(rotatedImageIcon);
 
                     } catch (IOException er) {
                     }
-
                 }
             }
         };

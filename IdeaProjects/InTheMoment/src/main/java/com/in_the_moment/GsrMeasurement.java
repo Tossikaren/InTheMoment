@@ -1,25 +1,36 @@
 package com.in_the_moment;
 
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class GsrMeasurement {
     private double measurement;
-    private String dateTime;
+    private Date dateTime;
     private int i;
+    private DateFormat dateTimeFormat = new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy");
+
+    public GsrMeasurement(){}
 
     public GsrMeasurement(double measurement, String dateTime, int i){
         this.measurement = measurement;
-        this.dateTime = dateTime;
+
+        try {
+            this.dateTime = dateTimeFormat.parse(dateTime);
+        }catch (ParseException p) {
+        }
+
         this.i = i;
-        //dateTime = new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy").format(dateTime);
+
     }
 
     public double getMeasurement() {
         return measurement;
     }
 
-    public String getDateTime() {
+    public Date getDateTime() {
         return dateTime;
     }
 
@@ -28,7 +39,11 @@ public class GsrMeasurement {
     }
 
     public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
+
+        try {
+            this.dateTime = dateTimeFormat.parse(dateTime);
+        }catch (ParseException p) {
+        }
     }
 
     public int getI() {
