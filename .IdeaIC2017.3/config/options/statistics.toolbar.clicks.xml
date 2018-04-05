@@ -6,10 +6,10 @@
       <entry action="Coverage@NavBarToolbar" count="1" />
       <entry action="Debug@NavBarToolbar" count="2" />
       <entry action="Maven.AddManagedFiles@Maven Navigator Toolbar" count="1" />
-      <entry action="Maven.Reimport@Maven Navigator Toolbar" count="2" />
+      <entry action="Maven.Reimport@Maven Navigator Toolbar" count="3" />
       <entry action="Maven.ShowSettings@Maven Navigator Toolbar" count="2" />
       <entry action="Print@RunnerToolbar" count="1" />
-      <entry action="Run@NavBarToolbar" count="328" />
+      <entry action="Run@NavBarToolbar" count="391" />
       <entry action="Stop@NavBarToolbar" count="3" />
       <entry action="com.intellij.execution.ui.layout.actions.RestoreViewAction@DebuggerToolbar" count="1" />
       <entry action="com.intellij.ide.browsers.actions.BaseWebBrowserAction@ContextToolbar" count="1" />

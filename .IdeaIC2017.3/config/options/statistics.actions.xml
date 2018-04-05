@@ -1,45 +1,45 @@
 <application>
   <component name="ActionsCollector">
     <counts>
-      <entry action="$Copy" count="7" />
+      <entry action="$Copy" count="8" />
       <entry action="$Cut" count="4" />
       <entry action="$Delete" count="7" />
       <entry action="$Paste" count="7" />
-      <entry action="$Redo" count="149" />
+      <entry action="$Redo" count="159" />
       <entry action="$SelectAll" count="2" />
-      <entry action="$Undo" count="971" />
+      <entry action="$Undo" count="1153" />
       <entry action="ActivateRunToolWindow" count="1" />
       <entry action="AddFrameworkSupport" count="1" />
       <entry action="CheckinFiles" count="1" />
-      <entry action="CheckinProject" count="7" />
+      <entry action="CheckinProject" count="8" />
       <entry action="ChooseRunConfiguration" count="5" />
-      <entry action="CompileDirty" count="37" />
+      <entry action="CompileDirty" count="41" />
       <entry action="CompileProject" count="1" />
       <entry action="CopyReference" count="1" />
       <entry action="Coverage" count="1" />
       <entry action="Create Class from Usage" count="1" />
       <entry action="Create method from usage" count="1" />
       <entry action="Debug" count="2" />
-      <entry action="EditorBackSpace" count="2101" />
-      <entry action="EditorChooseLookupItem" count="493" />
-      <entry action="EditorCopy" count="170" />
-      <entry action="EditorCut" count="2" />
-      <entry action="EditorDelete" count="334" />
-      <entry action="EditorDown" count="370" />
-      <entry action="EditorEnter" count="385" />
+      <entry action="EditorBackSpace" count="2615" />
+      <entry action="EditorChooseLookupItem" count="607" />
+      <entry action="EditorCopy" count="192" />
+      <entry action="EditorCut" count="3" />
+      <entry action="EditorDelete" count="404" />
+      <entry action="EditorDown" count="437" />
+      <entry action="EditorEnter" count="456" />
       <entry action="EditorEscape" count="2" />
-      <entry action="EditorIndentSelection" count="5" />
-      <entry action="EditorLeft" count="665" />
+      <entry action="EditorIndentSelection" count="8" />
+      <entry action="EditorLeft" count="852" />
       <entry action="EditorLineEnd" count="5" />
-      <entry action="EditorLineStart" count="5" />
-      <entry action="EditorPaste" count="238" />
-      <entry action="EditorRight" count="612" />
+      <entry action="EditorLineStart" count="6" />
+      <entry action="EditorPaste" count="267" />
+      <entry action="EditorRight" count="878" />
       <entry action="EditorStartNewLine" count="2" />
       <entry action="EditorStartNewLineBefore" count="3" />
-      <entry action="EditorTab" count="101" />
-      <entry action="EditorUnindentSelection" count="12" />
-      <entry action="EditorUp" count="156" />
-      <entry action="Generate" count="16" />
+      <entry action="EditorTab" count="115" />
+      <entry action="EditorUnindentSelection" count="15" />
+      <entry action="EditorUp" count="199" />
+      <entry action="Generate" count="17" />
       <entry action="Git.Add" count="6" />
       <entry action="Github.Share" count="2" />
       <entry action="GuiDesigner.CreateListener" count="1" />
@@ -49,28 +49,29 @@
       <entry action="GuiDesigner.ShowComponentTags" count="2" />
       <entry action="GuiDesigner.ShowGrid" count="2" />
       <entry action="Maven.AddManagedFiles" count="1" />
-      <entry action="Maven.Reimport" count="2" />
+      <entry action="Maven.Reimport" count="3" />
       <entry action="Maven.ShowSettings" count="2" />
-      <entry action="NewClass" count="12" />
+      <entry action="NewClass" count="13" />
       <entry action="NewDir" count="11" />
       <entry action="NewForm" count="4" />
       <entry action="NewModule" count="2" />
       <entry action="NewModuleInGroup" count="2" />
       <entry action="NewProject" count="6" />
-      <entry action="NextTemplateVariable" count="12" />
+      <entry action="NextTemplateVariable" count="13" />
       <entry action="OpenFile" count="11" />
       <entry action="Print" count="1" />
       <entry action="RefactoringMenuRenameFile" count="1" />
-      <entry action="RenameElement" count="10" />
-      <entry action="Run" count="341" />
+      <entry action="RenameElement" count="12" />
+      <entry action="Replace method reference with lambda" count="1" />
+      <entry action="Run" count="404" />
       <entry action="SaveAll" count="1" />
-      <entry action="ShowIntentionActions" count="41" />
-      <entry action="ShowProjectStructureSettings" count="3" />
+      <entry action="ShowIntentionActions" count="49" />
+      <entry action="ShowProjectStructureSettings" count="5" />
       <entry action="ShowSettings" count="4" />
       <entry action="Stop" count="3" />
       <entry action="SynchronizeCurrentFile" count="1" />
       <entry action="ToggleLineBreakpoint" count="1" />
-      <entry action="Vcs.Push" count="9" />
+      <entry action="Vcs.Push" count="11" />
       <entry action="ViewToolButtons" count="1" />
     </counts>
   </component>

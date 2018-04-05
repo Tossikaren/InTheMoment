@@ -6,27 +6,32 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class GsrMeasurement {
-    private double measurement;
+public class GsrMeasurement /*implements Comparable<GsrMeasurement>*/{
+    private int measurement;
     private Date dateTime;
-    private int i;
+    private int increaseDiff;
+
     private DateFormat dateTimeFormat = new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy");
 
     public GsrMeasurement(){}
 
-    public GsrMeasurement(double measurement, String dateTime, int i){
-        this.measurement = measurement;
+    public GsrMeasurement(double measurement, String dateTime){
+
+        int i =  (int)Math.round(measurement * 100);
+        this.measurement = i;
 
         try {
             this.dateTime = dateTimeFormat.parse(dateTime);
         }catch (ParseException p) {
         }
-
-        this.i = i;
-
     }
 
-    public double getMeasurement() {
+    /*@Override
+    public int compareTo(GsrMeasurement o) {
+        return this.getIncreaseDiff() - o.getIncreaseDiff();
+    }*/
+
+    public int getMeasurement() {
         return measurement;
     }
 
@@ -34,19 +39,11 @@ public class GsrMeasurement {
         return dateTime;
     }
 
-    public void setMeasurement(double measurement) {
-        this.measurement = measurement;
+    public int getIncreaseDiff() {
+        return increaseDiff;
     }
 
-    public void setDateTime(String dateTime) {
-
-        try {
-            this.dateTime = dateTimeFormat.parse(dateTime);
-        }catch (ParseException p) {
-        }
-    }
-
-    public int getI() {
-        return i;
+    public void setIncreaseDiff(int increaseDiff) {
+        this.increaseDiff = increaseDiff;
     }
 }
