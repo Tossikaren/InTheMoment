@@ -13,7 +13,7 @@
       <entry action="AddFrameworkSupport" count="1" />
       <entry action="AutoIndentLines" count="1" />
       <entry action="CheckinFiles" count="1" />
-      <entry action="CheckinProject" count="10" />
+      <entry action="CheckinProject" count="11" />
       <entry action="ChooseRunConfiguration" count="5" />
       <entry action="CollapseAllRegions" count="3" />
       <entry action="CollapseRegion" count="3" />
@@ -27,7 +27,7 @@
       <entry action="Create method from usage" count="1" />
       <entry action="Create property From Usage" count="1" />
       <entry action="Debug" count="4" />
-      <entry action="EditorBackSpace" count="4046" />
+      <entry action="EditorBackSpace" count="4079" />
       <entry action="EditorChooseLookupItem" count="1091" />
       <entry action="EditorCopy" count="301" />
       <entry action="EditorCut" count="7" />
@@ -90,7 +90,7 @@
       <entry action="ToggleBookmark7" count="1" />
       <entry action="ToggleDistractionFreeMode" count="2" />
       <entry action="ToggleLineBreakpoint" count="12" />
-      <entry action="Vcs.Push" count="13" />
+      <entry action="Vcs.Push" count="14" />
       <entry action="ViewToolButtons" count="1" />
     </counts>
   </component>
