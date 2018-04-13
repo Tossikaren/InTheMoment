@@ -9,9 +9,12 @@
       <entry action="Maven.Reimport@Maven Navigator Toolbar" count="3" />
       <entry action="Maven.ShowSettings@Maven Navigator Toolbar" count="2" />
       <entry action="Print@RunnerToolbar" count="1" />
-      <entry action="Run@NavBarToolbar" count="567" />
+      <entry action="Run@NavBarToolbar" count="716" />
       <entry action="Stop@NavBarToolbar" count="4" />
       <entry action="com.intellij.execution.ui.layout.actions.RestoreViewAction@DebuggerToolbar" count="1" />
+      <entry action="com.intellij.find.SearchTextArea$ClearAction@unknown" count="1" />
+      <entry action="com.intellij.find.editorHeaderActions.NextOccurrenceAction@EditorToolbar" count="14" />
+      <entry action="com.intellij.find.editorHeaderActions.PrevOccurrenceAction@EditorToolbar" count="1" />
       <entry action="com.intellij.ide.browsers.actions.BaseWebBrowserAction@ContextToolbar" count="1" />
       <entry action="com.intellij.notification.EventLogToolWindowFactory$ToggleSoftWraps@EventLog" count="2" />
     </counts>

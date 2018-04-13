@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -32,8 +33,10 @@ public class CustomPhotoRenderer extends JLabel implements ListCellRenderer<Phot
             BufferedImage myImage;
             try {
                 myImage = ImageIO.read(new File("C:\\In the Moment\\Moments\\Images\\" + folderName + "\\" + id));
-                ImageIcon myImageAsIcon = new ImageIcon(new ImageIcon (myImage).getImage().getScaledInstance(228, 171, Image.SCALE_DEFAULT));
-                //ImageIcon resourceImage = new ImageIcon(getClass().getResource("/images/20180320_182947_000.jpg"));
+
+                BufferedImage scaled = scale(myImage, 0.07);
+                ImageIcon myImageAsIcon = new ImageIcon(scaled);
+                //ImageIcon myImageAsIcon = new ImageIcon(new ImageIcon (myImage).getImage().getScaledInstance(228, 171, Image.SCALE_DEFAULT));
 
                 RotatedIcon rotatedImageIcon = new RotatedIcon(myImageAsIcon, RotatedIcon.Rotate.UP);
 
@@ -52,5 +55,26 @@ public class CustomPhotoRenderer extends JLabel implements ListCellRenderer<Phot
             }
 
             return this;
+        }
+
+        private BufferedImage scale(BufferedImage source,double ratio) {
+            int w = (int) (source.getWidth() * ratio);
+            int h = (int) (source.getHeight() * ratio);
+            BufferedImage bi = getCompatibleImage(w, h);
+            Graphics2D g2d = bi.createGraphics();
+            double xScale = (double) w / source.getWidth();
+            double yScale = (double) h / source.getHeight();
+            AffineTransform at = AffineTransform.getScaleInstance(xScale,yScale);
+            g2d.drawRenderedImage(source, at);
+            g2d.dispose();
+            return bi;
+        }
+
+        private BufferedImage getCompatibleImage(int w, int h) {
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice gd = ge.getDefaultScreenDevice();
+            GraphicsConfiguration gc = gd.getDefaultConfiguration();
+            BufferedImage image = gc.createCompatibleImage(w, h);
+            return image;
         }
     }

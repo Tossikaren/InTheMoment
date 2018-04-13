@@ -6,14 +6,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class GsrMeasurement /*implements Comparable<GsrMeasurement>*/{
+public class GsrMeasurement{
     private int measurement;
     private Date dateTime;
     private int increaseDiff;
 
     private DateFormat dateTimeFormat = new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy");
 
-    public GsrMeasurement(){}
 
     public GsrMeasurement(double measurement, String dateTime){
 
@@ -25,11 +24,6 @@ public class GsrMeasurement /*implements Comparable<GsrMeasurement>*/{
         }catch (ParseException p) {
         }
     }
-
-    /*@Override
-    public int compareTo(GsrMeasurement o) {
-        return this.getIncreaseDiff() - o.getIncreaseDiff();
-    }*/
 
     public int getMeasurement() {
         return measurement;

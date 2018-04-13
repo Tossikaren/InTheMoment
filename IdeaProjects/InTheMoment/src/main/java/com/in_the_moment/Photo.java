@@ -8,6 +8,7 @@ import java.util.Date;
 public class Photo {
     private String ID;
     private Date dateTime;
+    private String photoDescription;
     private DateFormat dateTimeFormat = new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy");
 
     public Photo(String ID, String dateTime) {
@@ -49,5 +50,13 @@ public class Photo {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getPhotoDescription() {
+        return photoDescription;
+    }
+
+    public void setPhotoDescription(String photoDescription) {
+        this.photoDescription = photoDescription;
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.in_the_moment.MainWindow">
-  <grid id="27dc6" binding="main_window_main_panel" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="main_window_main_panel" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="1014" height="1058"/>
@@ -14,10 +14,10 @@
     <children>
       <component id="36358" class="javax.swing.JTextField" binding="main_window_header">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <minimum-size width="327" height="100"/>
-            <preferred-size width="327" height="100"/>
-            <maximum-size width="327" height="100"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="80"/>
+            <preferred-size width="-1" height="80"/>
+            <maximum-size width="-1" height="80"/>
           </grid>
         </constraints>
         <properties>
@@ -36,7 +36,7 @@
       <grid id="86aa0" binding="selected_image_panel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="0" column="1" row-span="4" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+          <grid row="0" column="1" row-span="4" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <minimum-size width="650" height="850"/>
             <preferred-size width="650" height="850"/>
             <maximum-size width="650" height="850"/>
@@ -62,16 +62,18 @@
       </grid>
       <scrollpane id="7ae8e" binding="thumbnail_scroll_vindow">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="2" col-span="1" vsize-policy="7" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <wheelScrollingEnabled value="true"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="7f4d5" class="javax.swing.JList" binding="jlist1">
             <constraints/>
             <properties>
               <fixedCellHeight value="250"/>
-              <layoutOrientation value="2"/>
+              <layoutOrientation value="0"/>
             </properties>
           </component>
         </children>
@@ -88,6 +90,25 @@
         </constraints>
         <properties>
           <text value="Update"/>
+        </properties>
+      </component>
+      <component id="2692b" class="javax.swing.JButton" binding="photoDescriptionSaveButton">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Save description"/>
+        </properties>
+      </component>
+      <component id="2938f" class="javax.swing.JTextPane" binding="photoDescriptionTextField">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value=""/>
+          <toolTipText value=""/>
         </properties>
       </component>
     </children>
