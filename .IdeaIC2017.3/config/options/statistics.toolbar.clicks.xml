@@ -2,14 +2,14 @@
   <component name="ToolbarClicksCollector">
     <counts>
       <entry action="CheckinProject@ChangesViewToolbar" count="2" />
-      <entry action="CompileDirty@NavBarToolbar" count="35" />
+      <entry action="CompileDirty@NavBarToolbar" count="36" />
       <entry action="Coverage@NavBarToolbar" count="1" />
       <entry action="Debug@NavBarToolbar" count="4" />
       <entry action="Maven.AddManagedFiles@Maven Navigator Toolbar" count="1" />
       <entry action="Maven.Reimport@Maven Navigator Toolbar" count="3" />
       <entry action="Maven.ShowSettings@Maven Navigator Toolbar" count="2" />
       <entry action="Print@RunnerToolbar" count="1" />
-      <entry action="Run@NavBarToolbar" count="716" />
+      <entry action="Run@NavBarToolbar" count="866" />
       <entry action="Stop@NavBarToolbar" count="4" />
       <entry action="com.intellij.execution.ui.layout.actions.RestoreViewAction@DebuggerToolbar" count="1" />
       <entry action="com.intellij.find.SearchTextArea$ClearAction@unknown" count="1" />

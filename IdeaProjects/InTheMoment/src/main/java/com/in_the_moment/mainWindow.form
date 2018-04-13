@@ -1,116 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.in_the_moment.MainWindow">
-  <grid id="27dc6" binding="main_window_main_panel" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="main_window_main_panel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1014" height="1058"/>
+      <xy x="20" y="20" width="1080" height="1058"/>
     </constraints>
     <properties>
-      <background color="-1"/>
+      <background color="-2856342"/>
       <foreground color="-1"/>
-      <maximumSize width="991" height="874"/>
+      <inheritsPopupMenu value="false"/>
+      <maximumSize width="1060" height="1000"/>
+      <minimumSize width="1060" height="1000"/>
+      <preferredSize width="1060" height="1000"/>
     </properties>
     <border type="none"/>
     <children>
-      <component id="36358" class="javax.swing.JTextField" binding="main_window_header">
+      <grid id="36259" binding="JPanelLeft" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="10" left="40" bottom="30" right="5"/>
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <minimum-size width="-1" height="80"/>
-            <preferred-size width="-1" height="80"/>
-            <maximum-size width="-1" height="80"/>
-          </grid>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-1"/>
-          <caretColor color="-786945"/>
-          <editable value="false"/>
-          <focusable value="false"/>
-          <font name="Snap ITC" size="36" style="0"/>
+          <background color="-2856342"/>
           <foreground color="-16777216"/>
-          <horizontalAlignment value="0"/>
-          <selectedTextColor color="-786945"/>
-          <text value="In The Moment"/>
-          <verifyInputWhenFocusTarget value="false"/>
-        </properties>
-      </component>
-      <grid id="86aa0" binding="selected_image_panel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
-        <constraints>
-          <grid row="0" column="1" row-span="4" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <minimum-size width="650" height="850"/>
-            <preferred-size width="650" height="850"/>
-            <maximum-size width="650" height="850"/>
-          </grid>
-        </constraints>
-        <properties>
-          <background color="-1"/>
-          <foreground color="-1"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="186dc" class="javax.swing.JLabel" binding="jlabel1">
+          <component id="58745" class="javax.swing.JComboBox" binding="comboBoxDate">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="bed4a" class="javax.swing.JButton" binding="updateButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <background color="-1"/>
+              <text value="Update"/>
+            </properties>
+          </component>
+          <scrollpane id="7ae8e" binding="thumbnail_scroll_vindow">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <autoscrolls value="true"/>
+              <foreground color="-2856342"/>
+              <horizontalScrollBarPolicy value="31"/>
+              <verticalScrollBarPolicy value="22"/>
+              <wheelScrollingEnabled value="true"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="7f4d5" class="javax.swing.JList" binding="jlist1">
+                <constraints/>
+                <properties>
+                  <background color="-21846"/>
+                  <fixedCellHeight value="250"/>
+                  <font size="14" style="1"/>
+                  <foreground color="-1"/>
+                  <layoutOrientation value="0"/>
+                  <selectionForeground color="-1"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+          <component id="36358" class="javax.swing.JTextField" binding="main_window_header">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="80"/>
+                <preferred-size width="-1" height="80"/>
+                <maximum-size width="-1" height="80"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-2856342"/>
+              <caretColor color="-786945"/>
+              <disabledTextColor color="-1"/>
+              <doubleBuffered value="false"/>
+              <editable value="false"/>
+              <enabled value="true"/>
+              <focusable value="false"/>
+              <font name="Snap ITC" size="36" style="0"/>
               <foreground color="-1"/>
-              <text value=""/>
+              <horizontalAlignment value="0"/>
+              <opaque value="true"/>
+              <requestFocusEnabled value="true"/>
+              <scrollOffset value="1"/>
+              <selectedTextColor color="-786945"/>
+              <selectionColor color="-1"/>
+              <text value="In The Moment"/>
+              <verifyInputWhenFocusTarget value="false"/>
+              <visible value="true"/>
             </properties>
           </component>
         </children>
       </grid>
-      <scrollpane id="7ae8e" binding="thumbnail_scroll_vindow">
+      <grid id="416ea" binding="JPanelRight" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="10" left="15" bottom="30" right="40"/>
         <constraints>
-          <grid row="3" column="0" row-span="2" col-span="1" vsize-policy="7" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="4" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <wheelScrollingEnabled value="true"/>
+          <background color="-1"/>
+          <foreground color="-16777216"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="7f4d5" class="javax.swing.JList" binding="jlist1">
-            <constraints/>
+          <grid id="86aa0" binding="selected_image_panel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="850"/>
+                <preferred-size width="-1" height="850"/>
+                <maximum-size width="-1" height="850"/>
+              </grid>
+            </constraints>
             <properties>
-              <fixedCellHeight value="250"/>
-              <layoutOrientation value="0"/>
+              <background color="-1"/>
+              <doubleBuffered value="true"/>
+              <foreground color="-1"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="186dc" class="javax.swing.JLabel" binding="jlabel1">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-1"/>
+                  <text value=""/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <component id="2692b" class="javax.swing.JButton" binding="photoDescriptionSaveButton">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <horizontalTextPosition value="11"/>
+              <text value="Save description"/>
             </properties>
           </component>
+          <scrollpane id="ce560">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="2938f" class="javax.swing.JTextPane" binding="photoDescriptionTextField">
+                <constraints/>
+                <properties>
+                  <autoscrolls value="false"/>
+                  <background color="-21846"/>
+                  <focusable value="true"/>
+                  <font size="14" style="1"/>
+                  <foreground color="-1"/>
+                  <margin top="10" left="10" bottom="10" right="10"/>
+                  <selectedTextColor color="-1"/>
+                  <text value=""/>
+                  <toolTipText value=""/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
         </children>
-      </scrollpane>
-      <component id="58745" class="javax.swing.JComboBox" binding="comboBoxDate">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="bed4a" class="javax.swing.JButton" binding="updateButton" default-binding="true">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Update"/>
-        </properties>
-      </component>
-      <component id="2692b" class="javax.swing.JButton" binding="photoDescriptionSaveButton">
-        <constraints>
-          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Save description"/>
-        </properties>
-      </component>
-      <component id="2938f" class="javax.swing.JTextPane" binding="photoDescriptionTextField">
-        <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value=""/>
-          <toolTipText value=""/>
-        </properties>
-      </component>
+      </grid>
     </children>
   </grid>
 </form>

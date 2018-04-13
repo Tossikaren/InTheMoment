@@ -6,8 +6,9 @@
       <entry path="Code -&gt; Auto-Indent Lines" count="1" />
       <entry path="Code -&gt; Comment with Block Comment" count="31" />
       <entry path="Code -&gt; Rearrange Code" count="2" />
-      <entry path="Edit -&gt; Redo" count="5" />
-      <entry path="Edit -&gt; Undo" count="10" />
+      <entry path="Edit -&gt; Find -&gt; Replace Structurally..." count="1" />
+      <entry path="Edit -&gt; Redo" count="7" />
+      <entry path="Edit -&gt; Undo" count="20" />
       <entry path="File -&gt; New -&gt; Module..." count="2" />
       <entry path="File -&gt; New -&gt; Project..." count="6" />
       <entry path="File -&gt; Open Recent -&gt; Reopen Project" count="3" />
@@ -19,7 +20,7 @@
       <entry path="Run -&gt; Run" count="13" />
       <entry path="Run -&gt; Run..." count="5" />
       <entry path="VCS -&gt; Checkout from Version Control -&gt; GitHub" count="1" />
-      <entry path="VCS -&gt; Commit" count="9" />
+      <entry path="VCS -&gt; Commit" count="10" />
       <entry path="VCS -&gt; Git -&gt; Commit File" count="1" />
       <entry path="VCS -&gt; Git -&gt; Push..." count="10" />
       <entry path="VCS -&gt; Import into Version Control -&gt; Share Project on GitHub" count="2" />

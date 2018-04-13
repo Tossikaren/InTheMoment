@@ -48,6 +48,8 @@ public class MainWindow {
     private JButton updateButton;
     private JTextPane photoDescriptionTextField;
     private JButton photoDescriptionSaveButton;
+    private JPanel JPanelLeft;
+    private JPanel JPanelRight;
 
     private MainWindow(){
 
@@ -333,11 +335,20 @@ public class MainWindow {
                     ImageIcon myImageAsIcon = new ImageIcon (new ImageIcon(myImage).getImage().getScaledInstance(816, 612, Image.SCALE_DEFAULT));
                     RotatedIcon rotatedImageIcon = new RotatedIcon(myImageAsIcon, RotatedIcon.Rotate.UP);
                     jlabel1.setIcon(rotatedImageIcon);
+                    String photoDescription;
+                    File file = new File("C:\\In the Moment\\Moments\\Descriptions\\" + photosInNewFolderListModel.firstElement().getID() +".txt");
+                    if (file.exists()){
+                        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+                        if ((photoDescription = bufferedReader.readLine()) != null) {
+                            photosInNewFolderListModel.firstElement().setPhotoDescription(photoDescription);
+                            System.out.println("Photo description read: " + photoDescription);
+                        }
+                    }
                     if (photosInNewFolderListModel.firstElement().getPhotoDescription() == null){
                         photoDescriptionTextField.setText("Add description...");
                     } else {
                         photoDescriptionTextField.setText(photosInNewFolderListModel.firstElement().getPhotoDescription());
-                        System.out.println(photosInNewFolderListModel.firstElement().getPhotoDescription());
+                        //System.out.println(selectedItem.getPhotoDescription());
                     }
 
                 } catch (IOException i) {
@@ -383,8 +394,10 @@ public class MainWindow {
         });
         comboBoxDate.setSelectedItem(comboDate.getElementAt(comboDate.getSize()-1));
 
-        Border blackline = BorderFactory.createLineBorder(Color.black);
-        photoDescriptionTextField.setBorder(blackline);
+        Border customBorderRose = BorderFactory.createLineBorder(Color.decode("#D46A6A"));
+        main_window_header.setBorder(customBorderRose);
+        thumbnail_scroll_vindow.setBorder(customBorderRose);
+        //photoDescriptionTextField.setBorder();
         photoDescriptionSaveButton.addMouseListener(new MouseAdapter() {
             String saveText;
 
@@ -397,7 +410,7 @@ public class MainWindow {
                 selectedItem.setPhotoDescription(saveText);
 
                 // Save description to text file
-                try (FileWriter photoDescriptionTextFieldfw = new FileWriter("C:\\In the Moment\\Moments\\Descriptions\\" + selectedItem.getID() +".txt");
+                try (FileWriter photoDescriptionTextFieldfw = new FileWriter("C:\\In the Moment\\Moments\\Descriptions\\" + selectedItem.getID() + ".txt");
                      BufferedWriter photoDescriptionTextFieldbw = new BufferedWriter(photoDescriptionTextFieldfw);
                      PrintWriter photoDescriptionTextFieldline = new PrintWriter(photoDescriptionTextFieldbw)) {
                     photoDescriptionTextFieldline.println(saveText);
