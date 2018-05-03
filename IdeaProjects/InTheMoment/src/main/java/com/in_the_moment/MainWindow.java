@@ -8,19 +8,38 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.nio.charset.Charset;
+import java.net.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.ArrayList;
-import java.util.List;
+
+
+import com.gargoylesoftware.htmlunit.*;
+import com.gargoylesoftware.htmlunit.html.*;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class MainWindow {
+
+    private JTextField main_window_header;
+    private JPanel main_window_main_panel;
+    private JPanel selected_image_panel;
+    private JScrollPane thumbnail_scroll_vindow;
+    private JLabel jlabel1;
+    private JList<Photo> jlist1;
+    private JComboBox<String> comboBoxDate;
+    private JButton updateButton;
+    private JTextPane photoDescriptionTextField;
+    private JButton photoDescriptionSaveButton;
+    private JPanel JPanelLeft;
+    private JPanel JPanelRight;
+    private JScrollPane textDescriptionScroll;
+
     // array of supported extensions (use a List if you prefer)
     static final String[] EXTENSIONS = new String[]{
             "gif", "png", "bmp", "jpg" // and other formats you need
@@ -38,31 +57,208 @@ public class MainWindow {
             return (false);
         }
     };
-    private JTextField main_window_header;
-    private JPanel main_window_main_panel;
-    private JPanel selected_image_panel;
-    private JScrollPane thumbnail_scroll_vindow;
-    private JLabel jlabel1;
-    private JList jlist1;
-    private JComboBox comboBoxDate;
-    private JButton updateButton;
-    private JTextPane photoDescriptionTextField;
-    private JButton photoDescriptionSaveButton;
-    private JPanel JPanelLeft;
-    private JPanel JPanelRight;
+
+    public static URLConnection login(String _url, String _username, String _password) throws IOException, MalformedURLException {
+
+        String data = URLEncoder.encode("Usuario", "UTF-8") + "=" + URLEncoder.encode(_username, "UTF-8");
+        data += "&" + URLEncoder.encode("Contrase", "UTF-8") + "=" + URLEncoder.encode(_password, "UTF-8");
+
+        // Send data
+        URL url = new URL(_url);
+        URLConnection conn = url.openConnection();
+        conn.setDoOutput(true);
+
+        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+        wr.write(data);
+        wr.flush();
+        wr.close();
+
+
+
+        return conn;
+    }
 
     private MainWindow(){
 
+        DateFormat dateTimeFormat = new SimpleDateFormat("yyyyMMdd");
+        DateFormat newDateTimeFormat = new SimpleDateFormat("EEE dd. MMMM yyyy");
         DefaultComboBoxModel<String> comboDate = new DefaultComboBoxModel<>();
+
+        /*try {
+            *//* turn off annoying htmlunit warnings *//*
+            java.util.logging.Logger.getLogger("com.gargoylesoftware").setLevel(java.util.logging.Level.OFF);
+            WebClient webClient = new WebClient(BrowserVersion.FIREFOX_45);
+            webClient.getOptions().setThrowExceptionOnScriptError(false);
+            //webClient.waitForBackgroundJavaScript(3000);
+            //webClient.setHTMLParserListener(HTMLParserListener.LOG_REPORTER);
+            HtmlPage page = webClient.getPage("https://www.empatica.com/connect/download.php?id=463105");
+            HtmlForm form = page.getForms().get(0);
+            HtmlEmailInput emailUsername = form.getInputByName("username");
+            //HtmlTextInput emailUsername = form.getInputByName("username");
+            //HtmlInput emailUsername = page.getElementByName("username");
+            HtmlPasswordInput password = form.getInputByName("password");
+            //HtmlInput password = page.getElementByName("password");
+            emailUsername.setValueAttribute("mstent13@student.aau.dk");
+            password.setValueAttribute("Martin2981");
+            //password.setValueAttribute(".2612801277.");
+
+            //HtmlSubmitInput loginButton = page.getElementByName("login-button");
+            //page = loginButton.click();
+            System.out.println(page.getPage().toString());
+            HtmlButton button = form.getButtonByName("login-button");
+            //HtmlSubmitInput button = form.getInputByName("submit");
+
+            HtmlPage dashboardPage = button.click();
+            System.out.println(dashboardPage.getPage().toString());
+            HtmlPage sessionPage = dashboardPage.getAnchorByHref("sessions.php").click();
+            System.out.println(sessionPage.getPage().toString());
+            sessionPage.getAnchorByText("All Sessions").click().getWebResponse();
+            InputStream is = sessionPage.getAnchorByHref("https://www.empatica.com/connect/download.php?id=468840").click();
+            //InputStream is = sessionPage.getAnchorByText('"' + " Download" + '"').click();
+            *//*InputStream is = button.click().getWebResponse().getContentAsStream();*//*
+            try {
+                File f = new File("c:\\In the Moment\\download\\1523455157_A01163.zip");
+                OutputStream os = new FileOutputStream(f);
+                byte[] bytes = new byte[1024]; // make it bigger if you want. Some recommend 8x, others 100x
+                int length = 0;
+                while ((length = is.read(bytes))!=-1) {
+                    os.write(bytes, 0, length);
+                }
+                os.close();
+                is.close();
+            } catch (IOException ex) {
+                // Exception handling
+            }
+        } catch (IOException io){
+        }*/
+
+        /*try {
+            URL url = new URL("https://www.empatica.com/connect/download.php?id=463105");
+            String userPass = "mstent13%40student.aau.dk:.2612801277.";
+            String basicAuth = "Basic " + Base64.getEncoder().encodeToString(userPass.getBytes());
+            //or
+            //String basicAuth = "Basic " + new String(Base64.encode(userPass.getBytes(), Base64.No_WRAP));
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestProperty("Authorization", basicAuth);
+            urlConnection.connect();
+            ReadableByteChannel rbc = Channels.newChannel(url.openStream());
+            FileOutputStream fos = new FileOutputStream("c:\\In the Moment\\download\\1523455157_A01163.zip");
+            fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        } catch (IOException io){
+
+        }*/
+
+        /*try {
+           URLConnection uo= login("https://www.empatica.com/connect/download.php?id=463105", "mstent13@student.aau.dk", ".2612801277.");
+
+            ReadableByteChannel rbc = Channels.newChannel(uo.getInputStream());
+            FileOutputStream fos = new FileOutputStream("c:\\In the Moment\\download\\activation_info_students_only_2017-2018.pdf");
+            fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        } catch (IOException io){
+
+        }*/
+
+        /*MyAuthenticator.setPasswordAuthentication( "mstent13%40student.aau.dk",".2612801277.");
+        Authenticator.setDefault(new MyAuthenticator());
+        try {
+            String urlLink = "https://www.empatica.com/connect/login.php?username=mstent13@student.aau.dk&password=Martin2981";
+            URL url = new URL(urlLink);
+            HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
+            httpConn.setRequestMethod("GET");
+
+*//*            String urlLinkFile = "https://www.empatica.com/connect/download.php?id=463105?username=mstent13@student.aau.dk&password=Martin2981";
+            URL urlFile = new URL(urlLinkFile);
+            HttpURLConnection httpConnFile = (HttpURLConnection) urlFile.openConnection();
+            httpConnFile.setRequestMethod("GET");*//*
+            System.out.println("File size: " + httpConn.getContentLengthLong());
+
+        } catch (IOException io){
+
+        }*/
+
+
+/*        String username = "mstent13%40student.aau.dk";
+        String password = ".2612801277.";
+
+        String usepass = username + ":" + password;
+        String basicAuth = "Basic "+  javax.xml.bind.DatatypeConverter.printBase64Binary(usepass.getBytes());
+
+        try {
+            URL url = new URL("https://www.empatica.com/connect/download.php?id=463105");
+            HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
+
+            httpConn.setRequestProperty("Authorization", basicAuth);
+            System.out.println("File size: " + httpConn.getContentLengthLong());
+            ReadableByteChannel rbc = Channels.newChannel(httpConn.getInputStream());
+            //String fileName = fileURL.substring(fileURL.lastIndexOf("/") + 1, fileURL.length());
+            FileOutputStream fos = new FileOutputStream("c:\\In the Moment\\download\\1523455157_A01163.zip");
+
+            fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+
+            fos.close();
+            rbc.close();
+        } catch (IOException io){
+            System.out.println(io);
+        }*/
+
+        /*CredentialsProvider credsProvider = new BasicCredentialsProvider();
+        credsProvider.setCredentials(
+                new AuthScope("httpbin.org", 80),
+                new UsernamePasswordCredentials("mstent13%40student.aau.dk", ".2612801277."));
+        CloseableHttpClient httpclient = HttpClients.custom()
+                .setDefaultCredentialsProvider(credsProvider)
+                .build();
+
+        HttpGet httpget = new HttpGet("http://files.portal.aau.dk/filesharing/download/person/tsuki@its/aau/dk/~/aau-only/Mathworks/activation_info_students_only_2017-2018.pdf");
+
+        try {
+            InputStream input = null;
+            OutputStream output = null;
+            try {
+
+                byte[] buffer = new byte[1024];
+                //System.out.println("Executing request " + httpget.getRequestLine());
+                CloseableHttpResponse response = httpclient.execute(httpget);
+                 input = response.getEntity().getContent();
+                output = new FileOutputStream("c:\\In the Moment\\download\\activation_info_students_only_2017-2018.pdf");
+                for (int length; (length = input.read(buffer)) > 0;) {
+                    output.write(buffer, 0, length);
+                }*/
+/*                try {
+                    System.out.println("----------------------------------------");
+                    System.out.println(response.getStatusLine());
+                    System.out.println(EntityUtils.toString(response.getEntity()));
+                } finally {
+                    response.close();
+                }*//*
+            } finally {
+                httpclient.close();
+                if (output != null) try { output.close(); } catch (IOException logOrIgnore) {}
+                if (input != null) try { input.close(); } catch (IOException logOrIgnore) {}
+            }
+        } catch (IOException io){
+
+        }*/
+
+        /*try {
+            //URL website = new URL("https://mstent13@student.aau.dk:Martin2981@www.empatica.com/connect/download.php?id=463105");
+            //URL website = new URL("https://www.empatica.com/connect/download.php?id=463105");
+
+            URL website = new URL("http://files.portal.aau.dk/filesharing/download/person/tsuki@its/aau/dk/~/aau-only/Mathworks/activation_info_students_only_2017-2018.pdf");
+            ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+            FileOutputStream fos = new FileOutputStream("c:\\In the Moment\\download\\activation_info_students_only_2017-2018.pdf");
+            fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        }catch (IOException ex){
+            System.out.println("Download from Emphatica: " + ex);
+        }*/
 
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
                 ArrayList<ArrayList<String>> originalPhotoDataList = new ArrayList<ArrayList<String>>();
-                File originalPhotosDirectory = new File("E:\\OneDrive\\Martin\\Martin billeder\\Narrative Clip\\martinstentoft@gmail.com\\81103ff0");
                 try {
+                    File originalPhotosDirectory = new File("E:\\OneDrive\\Martin\\Martin billeder\\Narrative Clip\\martinstentoft@gmail.com\\81103ff0");
                     int i = 0;
                     if (originalPhotosDirectory.isDirectory()) {
                         for (final File f : originalPhotosDirectory.listFiles()) {
@@ -74,7 +270,6 @@ public class MainWindow {
                                             File directoryDay = new File("E:\\OneDrive\\Martin\\Martin billeder\\Narrative Clip\\martinstentoft@gmail.com\\81103ff0\\" + f.getName() + "\\" + g.getName());
                                             if (directoryDay.isDirectory()) {
                                                 for (final File h : directoryDay.listFiles()) {
-                                                    /*System.out.println("Original photo data: " + f.getName() + " " + g.getName() + " " + h.getName());*/
                                                     originalPhotoDataList.add(new ArrayList<String>());
                                                     originalPhotoDataList.get(i).add(f.getName());
                                                     originalPhotoDataList.get(i).add(g.getName());
@@ -105,30 +300,12 @@ public class MainWindow {
                 } catch (IOException io) {
                 }
 
-                for (int i = 0; i < hasTopTen.size(); i++) {
-                    System.out.println("Does have top ten: " + hasTopTen.get(i));
-                }
+                systemOutArrayListLoop("Does have top ten: ", hasTopTen);
 
                 for (int i = 0; i < originalPhotoDataList.size(); i++) {
-                    /*System.out.println("Her: " + originalPhotoDataList.get(i).get(0) + originalPhotoDataList.get(i).get(1) + originalPhotoDataList.get(i).get(2));*/
                     if (hasTopTen.contains(originalPhotoDataList.get(i).get(0) + originalPhotoDataList.get(i).get(1) + originalPhotoDataList.get(i).get(2))){
                         originalPhotoDataList.remove(i);
                     }
-
-                    /*if (hasTopTen.size() == 0) {
-                        doesNotHaveTopTen.add(originalPhotoDataList.get(i).get(0) + originalPhotoDataList.get(i).get(1) + originalPhotoDataList.get(i).get(2));
-                    } else {
-                        boolean match = false;
-                        for (int j = 0; j < hasTopTen.size(); j++) {
-                            if ((originalPhotoDataList.get(i).get(0) + originalPhotoDataList.get(i).get(1) + originalPhotoDataList.get(i).get(2)).equals(hasTopTen.get(j))) {
-                                match = true;
-                            }
-                        }
-                        if (!match) {
-                            doesNotHaveTopTen.add(originalPhotoDataList.get(i).get(0) + originalPhotoDataList.get(i).get(1) + originalPhotoDataList.get(i).get(2));
-                            System.out.println("Does not have top ten: " + originalPhotoDataList.get(i));
-                        }
-                    }*/
                 }
 
                 for (int i = 0; i < originalPhotoDataList.size(); i++) {
@@ -139,9 +316,7 @@ public class MainWindow {
                 File checkGsrFileDirectory = new File("C:\\In the Moment\\GSR files");
                 for (int i = 0; i < originalPhotoDataList.size(); i++) {
                     String date = originalPhotoDataList.get(i).get(0) + originalPhotoDataList.get(i).get(1) + originalPhotoDataList.get(i).get(2);
-                    //System.out.println("What is the date of missing top ten: " + date);
                     for (final File f : checkGsrFileDirectory.listFiles()) {
-                        //System.out.println("CSV filename: " + f.getName());
                         //System.out.println("Equals? : " + date + ".csv == " + f.getName());
                         if ((date + ".csv").equals(f.getName())) {
                             System.out.println("It's true woo hoo: " + date);
@@ -157,11 +332,9 @@ public class MainWindow {
 
                                 // get unix timestamp from csv file
                                 String timeStampPartOfStringUnixFormat = br.readLine();
-                                //System.out.println("Unix timestamp from csv file: " + timeStampPartOfStringUnixFormat);
 
                                 // convert unix timestamp to java.util.date object
                                 java.util.Date timeStampDateObjectFormat = new java.util.Date((long) Double.parseDouble(timeStampPartOfStringUnixFormat) * 1000);
-                                //System.out.println("Unix timestamp converted to java.util.Date object: " + timeStampDateObjectFormat);
 
                                 // get measurement frequency pr second from csv file
                                 double frequency = Double.parseDouble(br.readLine());
@@ -177,15 +350,9 @@ public class MainWindow {
 
                                     // increase timestamp with measurement frequency pr second (represented in milliseconds)
                                     timeStampDateObjectFormat.setTime(timeStampDateObjectFormat.getTime() + 1000 / Math.round(frequency));
-                                    //System.out.println("Measurement timestamp In the Moment format: " + gsrMeasurementListModel.getElementAt(i).getMeasurement() + " " + new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy").format(gsrMeasurementListModel.getElementAt(i).getDateTime()) + " " + gsrMeasurementListModel.getElementAt(i).getI());
                                 }
                             } catch (IOException io) {
-
                             }
-
-                            /*for(int j = 0; j < gsrMeasurementListModel.getSize();j++) {
-                                System.out.println("Measurement timestamp In the Moment format: " + gsrMeasurementListModel.getElementAt(j).getMeasurement() + " " + gsrMeasurementListModel.getElementAt(j).getDateTime());
-                            }*/
 
                             // Create list with top 10 highest GSR measurements. Create list with timestamps from all photos from that day. Foreach GSR measurement on 10 highest GSR measurement list compare timestamp with timestamps from list of photos to find the photo which was taken closest to the measurement
 
@@ -195,20 +362,14 @@ public class MainWindow {
                             for (int j = 0; j < gsrMeasurementListModel.size() - 1; j++) {
                                 int diff = gsrMeasurementListModel.getElementAt(j + 1).getMeasurement() - gsrMeasurementListModel.getElementAt(j).getMeasurement();
 
-                                //System.out.println("All diffs: " + diff);
                                 if (diff > 0) {
-                                    /*System.out.println(gsrMeasurementListModel.getElementAt(i).getMeasurement());
-                                    System.out.println(gsrMeasurementListModel.getElementAt(i+1).getMeasurement());
-                                    System.out.println("All diffs: " + diff);*/
                                     increasedGsrMeasurements = gsrMeasurementListModel.getElementAt(j + 1);
                                     increasedGsrMeasurements.setIncreaseDiff(diff);
                                     listWithAllIncreasesInGsrMeasurements.add(increasedGsrMeasurements);
                                 }
                             }
 
-                            // Compare all gsr measurement jumps on the list of objects with gsr measurement jumps to find the 10 highest jumps
-
-                            // Reverse sort list with the increased gsr measurement objects
+                            // Sort list with gsr measurement jumps to find the 10 highest jumps
                             listWithAllIncreasesInGsrMeasurements.sort(Comparator.comparing(GsrMeasurement::getIncreaseDiff).reversed());
 
                             // Write list to console to check contents
@@ -218,25 +379,18 @@ public class MainWindow {
 
                             DefaultListModel<Photo> photosInFolderListModel = new DefaultListModel<>();
                             File dir = new File("E:\\OneDrive\\Martin\\Martin billeder\\Narrative Clip\\martinstentoft@gmail.com\\81103ff0\\" + originalPhotoDataList.get(i).get(0) + "\\" + originalPhotoDataList.get(i).get(1) + "\\" + originalPhotoDataList.get(i).get(2));
-                            /*File dir = new File("E:\\OneDrive\\Martin\\Martin billeder\\Narrative Clip\\martinstentoft@gmail.com\\81103ff0\\2018\\04\\09");*/
                             if (dir.isDirectory()) { // make sure it's a directory
                                 for (final File g : dir.listFiles(IMAGE_FILTER)) {
 
                                     Photo newPhoto = new Photo(g.getName(), g.getName());
                                     photosInFolderListModel.addElement(newPhoto);
-                                    //System.out.println(photosInFolderListModel.toString());
                                 }
                             }
-
-                            /*for (int j = 0; j < photosInFolderListModel.size(); j++){
-                                System.out.println("Photos in folder: " + photosInFolderListModel.getElementAt(j).getDateTime());
-                            }*/
 
                             Photo currentClosest = null;
                             DefaultListModel<Photo> finalPhotoList = new DefaultListModel<>();
 
                             for (int j = 0; j < 10; j++) {
-
                                 long smallestDifference = Math.abs(listWithAllIncreasesInGsrMeasurements.get(j).getDateTime().getTime() - photosInFolderListModel.firstElement().getDateTime().getTime());
                                 currentClosest = photosInFolderListModel.firstElement();
 
@@ -269,127 +423,150 @@ public class MainWindow {
                                 }
                             }
 
-                            // Save name of topten list to textfile
+                            // Save name of topten list to textfile and update combobox
                             try (FileWriter fw = new FileWriter("C:\\In the Moment\\Moments\\topten.txt", true);
                                  BufferedWriter bw = new BufferedWriter(fw);
                                  PrintWriter line = new PrintWriter(bw)) {
                                 line.println(originalPhotoDataList.get(i).get(0) + originalPhotoDataList.get(i).get(1) + originalPhotoDataList.get(i).get(2));
-                            } catch (IOException io) {
 
+                                try {
+                                    Date newTopTendate;
+                                    newTopTendate = dateTimeFormat.parse(originalPhotoDataList.get(i).get(0) + originalPhotoDataList.get(i).get(1) + originalPhotoDataList.get(i).get(2));
+                                    comboDate.addElement(newDateTimeFormat.format(newTopTendate));
+
+                                }catch (ParseException p) {
+                                }
+                            } catch (IOException io) {
                             }
                         }
                     }
                 }
-                try {
+                /*try {
                     File file = new File("C:\\In the Moment\\Moments\\topten.txt");
                     BufferedReader br = new BufferedReader(new FileReader(file));
-                    String st;
-                    while ((st = br.readLine()) != null) {
-                        if (((DefaultComboBoxModel)comboBoxDate.getModel()).getIndexOf(st) == -1){
-                            comboDate.addElement(st);
+                    String line;
+                    Date date;
+                    while ((line = br.readLine()) != null) {
+                        try {
+                            date = dateTimeFormat.parse(line);
+
+                            if (((DefaultComboBoxModel)comboBoxDate.getModel()).getIndexOf(date) == -1){
+                                comboDate.addElement(newDateTimeFormat.format(date));
+                            }
+                        }catch (ParseException p) {
                         }
                     }
                 }catch (IOException io){
                 }
-                comboBoxDate.setModel(comboDate);
+                comboBoxDate.setModel(comboDate);*/
             }
         });
 
         try {
             File file = new File("C:\\In the Moment\\Moments\\topten.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
-            String st;
-            while ((st = br.readLine()) != null) {
-                comboDate.addElement(st);
+            String line;
+            Date date;
+            while ((line = br.readLine()) != null) {
+                try {
+                    date = dateTimeFormat.parse(line);
+                    comboDate.addElement(newDateTimeFormat.format(date));
+                }catch (ParseException p) {
+                }
             }
         }catch (IOException io){
         }
         comboBoxDate.setModel(comboDate);
         //thumbnail_scroll_vindow.getVerticalScrollBar().setUnitIncrement(50);
 
-        comboBoxDate.addItemListener(new ItemListener() {
+        comboBoxDate.addActionListener(new ActionListener() {
             @Override
-            public void itemStateChanged(ItemEvent e) {
-                Object folderName = e.getItem();
-
-                // Create listmodel with photo objects for the jlist view
-                DefaultListModel<Photo> photosInNewFolderListModel = new DefaultListModel<>();
-                File jListPhotos = new File("C:\\In the Moment\\Moments\\Images\\" + folderName + "\\");
-                if (jListPhotos.isDirectory()) { // make sure it's a directory
-                    for (final File fNew : jListPhotos.listFiles(IMAGE_FILTER)) {
-
-
-                        Photo newPhoto = new Photo(fNew.getName(), fNew.getName());
-                        photosInNewFolderListModel.addElement(newPhoto);
-                        //System.out.println("New folder contents: " + photosInNewFolderListModel.toString());
+            public void actionPerformed(ActionEvent e) {
+                String comboBoxString = null;
+                String folderName;
+                if (comboBoxDate.getSelectedItem() != null) {
+                    try {
+                        comboBoxString = dateTimeFormat.format(newDateTimeFormat.parse(comboBoxDate.getSelectedItem().toString()));
+                    } catch (ParseException pa) {
+                        System.out.println("Get selected date from combobox: " + pa);
                     }
-                }
+                    folderName = comboBoxString;
+                    System.out.println("Fra combobox: " + folderName);
 
-                jlist1.setModel(photosInNewFolderListModel);
-                jlist1.setCellRenderer(new CustomPhotoRenderer(folderName));
-
-                // Add first photo from jlist listmodel to jlabel view
-                BufferedImage myImage;
-                try {
-                    myImage = ImageIO.read(new File("C:\\In the Moment\\Moments\\Images\\" + folderName + "\\" + photosInNewFolderListModel.firstElement().getID()));
-                    ImageIcon myImageAsIcon = new ImageIcon (new ImageIcon(myImage).getImage().getScaledInstance(816, 612, Image.SCALE_DEFAULT));
-                    RotatedIcon rotatedImageIcon = new RotatedIcon(myImageAsIcon, RotatedIcon.Rotate.UP);
-                    jlabel1.setIcon(rotatedImageIcon);
-                    String photoDescription;
-                    File file = new File("C:\\In the Moment\\Moments\\Descriptions\\" + photosInNewFolderListModel.firstElement().getID() +".txt");
-                    if (file.exists()){
-                        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-                        if ((photoDescription = bufferedReader.readLine()) != null) {
-                            photosInNewFolderListModel.firstElement().setPhotoDescription(photoDescription);
-                            System.out.println("Photo description read: " + photoDescription);
+                    // Create listmodel with photo objects for the jlist view
+                    DefaultListModel<Photo> photosInNewFolderListModel = new DefaultListModel<>();
+                    File jListPhotos = new File("C:\\In the Moment\\Moments\\Images\\" + folderName + "\\");
+                    if (jListPhotos.isDirectory()) { // make sure it's a directory
+                        for (final File fNew : jListPhotos.listFiles(IMAGE_FILTER)) {
+                            Photo newPhoto = new Photo(fNew.getName(), fNew.getName());
+                            photosInNewFolderListModel.addElement(newPhoto);
                         }
                     }
-                    if (photosInNewFolderListModel.firstElement().getPhotoDescription() == null){
-                        photoDescriptionTextField.setText("Add description...");
-                    } else {
-                        photoDescriptionTextField.setText(photosInNewFolderListModel.firstElement().getPhotoDescription());
-                        //System.out.println(selectedItem.getPhotoDescription());
-                    }
 
-                } catch (IOException i) {
-                }
-                MouseAdapter mouseAdapter = new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        super.mouseClicked(e);
-                        if (e.getClickCount() >= 1) {
+                    jlist1.setModel(photosInNewFolderListModel);
+                    jlist1.setCellRenderer(new CustomPhotoRenderer(folderName));
 
-                            Photo selectedItem = (Photo) jlist1.getSelectedValue();
-                            BufferedImage myImage;
-
-                            try {
-                                myImage = ImageIO.read(new File("C:\\In the Moment\\Moments\\Images\\" + folderName + "\\" + selectedItem.getID()));
-                                ImageIcon myImageAsIcon = new ImageIcon (new ImageIcon(myImage).getImage().getScaledInstance(816, 612, Image.SCALE_DEFAULT));
-                                RotatedIcon rotatedImageIcon = new RotatedIcon(myImageAsIcon, RotatedIcon.Rotate.UP);
-                                jlabel1.setIcon(rotatedImageIcon);
-                                String photoDescription;
-                                File file = new File("C:\\In the Moment\\Moments\\Descriptions\\" + selectedItem.getID() +".txt");
-                                if (file.exists()){
-                                    BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-                                    if ((photoDescription = bufferedReader.readLine()) != null) {
-                                        selectedItem.setPhotoDescription(photoDescription);
-                                        System.out.println("Photo description read: " + photoDescription);
-                                    }
-                                }
-                                if (selectedItem.getPhotoDescription() == null){
-                                    photoDescriptionTextField.setText("Add description...");
-                                } else {
-                                    photoDescriptionTextField.setText(selectedItem.getPhotoDescription());
-                                    //System.out.println(selectedItem.getPhotoDescription());
-                                }
-                            } catch (IOException er) {
-                                System.out.println("JList Image Clicked: " + folderName + " " + er);
+                    // Add first photo from jlist listmodel to jlabel view
+                    BufferedImage myImage;
+                    try {
+                        myImage = ImageIO.read(new File("C:\\In the Moment\\Moments\\Images\\" + folderName + "\\" + photosInNewFolderListModel.firstElement().getID()));
+                        ImageIcon myImageAsIcon = new ImageIcon(new ImageIcon(myImage).getImage().getScaledInstance(816, 612, Image.SCALE_DEFAULT));
+                        RotatedIcon rotatedImageIcon = new RotatedIcon(myImageAsIcon, RotatedIcon.Rotate.UP);
+                        jlabel1.setIcon(rotatedImageIcon);
+                        String photoDescription;
+                        File file = new File("C:\\In the Moment\\Moments\\Descriptions\\" + photosInNewFolderListModel.firstElement().getID() + ".txt");
+                        if (file.exists()) {
+                            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+                            if ((photoDescription = bufferedReader.readLine()) != null) {
+                                photosInNewFolderListModel.firstElement().setPhotoDescription(photoDescription);
+                                System.out.println("Photo description read: " + photoDescription);
                             }
                         }
+                        if (photosInNewFolderListModel.firstElement().getPhotoDescription() == null) {
+                            photoDescriptionTextField.setText("Add description...");
+                        } else {
+                            photoDescriptionTextField.setText(photosInNewFolderListModel.firstElement().getPhotoDescription());
+                        }
+
+                    } catch (IOException i) {
                     }
-                };
-                //jlist1.removeMouseListener(mouseAdapter);
-                jlist1.addMouseListener(mouseAdapter);
+                    MouseAdapter mouseAdapter = new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            super.mouseClicked(e);
+                            if (e.getClickCount() >= 1) {
+
+                                Photo selectedItem = (Photo) jlist1.getSelectedValue();
+                                BufferedImage myImage;
+
+                                try {
+                                    myImage = ImageIO.read(new File("C:\\In the Moment\\Moments\\Images\\" + folderName + "\\" + selectedItem.getID()));
+                                    ImageIcon myImageAsIcon = new ImageIcon(new ImageIcon(myImage).getImage().getScaledInstance(816, 612, Image.SCALE_DEFAULT));
+                                    RotatedIcon rotatedImageIcon = new RotatedIcon(myImageAsIcon, RotatedIcon.Rotate.UP);
+                                    jlabel1.setIcon(rotatedImageIcon);
+                                    String photoDescription;
+                                    File file = new File("C:\\In the Moment\\Moments\\Descriptions\\" + selectedItem.getID() + ".txt");
+                                    if (file.exists()) {
+                                        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+                                        if ((photoDescription = bufferedReader.readLine()) != null) {
+                                            selectedItem.setPhotoDescription(photoDescription);
+                                            System.out.println("Photo description read: " + photoDescription);
+                                        }
+                                    }
+                                    if (selectedItem.getPhotoDescription() == null) {
+                                        photoDescriptionTextField.setText("Add description...");
+                                    } else {
+                                        photoDescriptionTextField.setText(selectedItem.getPhotoDescription());
+                                    }
+                                } catch (IOException er) {
+                                    System.out.println("JList Image Clicked: " + folderName + " " + er);
+                                }
+                            }
+                        }
+                    };
+                    //jlist1.removeMouseListener(mouseAdapter);
+                    jlist1.addMouseListener(mouseAdapter);
+                }
             }
         });
         comboBoxDate.setSelectedItem(comboDate.getElementAt(comboDate.getSize()-1));
@@ -405,7 +582,13 @@ public class MainWindow {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 saveText = photoDescriptionTextField.getText();
-                Photo selectedItem = (Photo) jlist1.getSelectedValue();
+                Photo selectedItem;
+                if (!(jlist1.getSelectedValue() == null)) {
+                    selectedItem = (Photo) jlist1.getSelectedValue();
+                }else {
+                    jlist1.setSelectedIndex(0);
+                    selectedItem = (Photo) jlist1.getSelectedValue();
+                }
                 System.out.println(selectedItem.getID());
                 selectedItem.setPhotoDescription(saveText);
 
@@ -419,7 +602,13 @@ public class MainWindow {
                 }
             }
         });
+    }
+
+    private void systemOutArrayListLoop(String string, ArrayList arrayList){
+        for (int i = 0; i < arrayList.size(); i++) {
+            System.out.println( string + arrayList.get(i));
         }
+    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("MainWindow");

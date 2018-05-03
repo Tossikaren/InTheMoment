@@ -41,7 +41,7 @@ public class CustomPhotoRenderer extends JLabel implements ListCellRenderer<Phot
                 RotatedIcon rotatedImageIcon = new RotatedIcon(myImageAsIcon, RotatedIcon.Rotate.UP);
 
                 setIcon(rotatedImageIcon);
-                setText(new SimpleDateFormat("HH:mm:ss-dd/MM/yyyy").format(dateTime));
+                setText(new SimpleDateFormat("HH:mm:ss").format(dateTime));
 
             } catch (IOException e) {
             }
