@@ -1,4 +1,4 @@
-package com.in_the_moment;
+package com.in_the_moment.Model;
 
 
 import java.text.DateFormat;
@@ -15,10 +15,8 @@ public class GsrMeasurement{
 
 
     public GsrMeasurement(double measurement, String dateTime){
-
         int i =  (int)Math.round(measurement * 100);
         this.measurement = i;
-
         try {
             this.dateTime = dateTimeFormat.parse(dateTime);
         }catch (ParseException p) {
@@ -39,5 +37,14 @@ public class GsrMeasurement{
 
     public void setIncreaseDiff(int increaseDiff) {
         this.increaseDiff = increaseDiff;
+    }
+
+    @Override
+    public String toString() {
+        return "GsrMeasurement{" +
+                "measurement=" + measurement +
+                ", dateTime=" + dateTime +
+                ", increaseDiff=" + increaseDiff +
+                '}';
     }
 }

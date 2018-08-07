@@ -1,4 +1,4 @@
-package com.in_the_moment;
+package com.in_the_moment.Model;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Photo {
-    private String ID;
+    private final String ID;
     private Date dateTime;
     private String photoDescription;
     private DateFormat dateTimeFormat = new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy");
@@ -18,7 +18,6 @@ public class Photo {
         SimpleDateFormat myFormat = new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy");
 
         try {
-
             String reformattedStringDate = myFormat.format(fromUser.parse(dateTime.replace(".jpg", "")));
             Date javaUtilDateFormat = dateTimeFormat.parse(reformattedStringDate);
             javaUtilDateFormat.setTime(javaUtilDateFormat.getTime() + 2 * 60 * 60 * 1000 );
@@ -26,7 +25,6 @@ public class Photo {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
     }
 
     public String getID() {
@@ -42,7 +40,6 @@ public class Photo {
         SimpleDateFormat myFormat = new SimpleDateFormat("HH:mm:ss.SSS-dd/MM/yyyy");
 
         try {
-
             String reformattedStringDate = myFormat.format(fromUser.parse(dateTime.replace(".jpg", "")));
             Date javaUtilDateFormat = dateTimeFormat.parse(reformattedStringDate);
             javaUtilDateFormat.setTime(javaUtilDateFormat.getTime() + 2 * 60 * 60 * 1000 );

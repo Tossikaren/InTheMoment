@@ -2,22 +2,31 @@
   <component name="ToolbarClicksCollector">
     <counts>
       <entry action="CheckinProject@ChangesViewToolbar" count="2" />
-      <entry action="CompileDirty@NavBarToolbar" count="40" />
+      <entry action="CompileDirty@NavBarToolbar" count="42" />
       <entry action="Coverage@NavBarToolbar" count="1" />
       <entry action="Debug@NavBarToolbar" count="4" />
-      <entry action="Maven.AddManagedFiles@Maven Navigator Toolbar" count="1" />
-      <entry action="Maven.Reimport@Maven Navigator Toolbar" count="3" />
-      <entry action="Maven.ShowSettings@Maven Navigator Toolbar" count="2" />
+      <entry action="Maven.AddManagedFiles@Maven Navigator Toolbar" count="3" />
+      <entry action="Maven.ExecuteGoal@Maven Navigator Toolbar" count="1" />
+      <entry action="Maven.Reimport@Maven Navigator Toolbar" count="5" />
+      <entry action="Maven.ShowSettings@Maven Navigator Toolbar" count="3" />
+      <entry action="Maven.UpdateFolders@Maven Navigator Toolbar" count="1" />
       <entry action="Print@RunnerToolbar" count="1" />
-      <entry action="Run@NavBarToolbar" count="1074" />
+      <entry action="Rerun@RunnerToolbar" count="1" />
+      <entry action="Run@NavBarToolbar" count="1282" />
       <entry action="Stop@NavBarToolbar" count="4" />
+      <entry action="com.intellij.diff.actions.impl.SetEditorSettingsAction@DiffToolbar" count="1" />
+      <entry action="com.intellij.execution.impl.ConsoleViewImpl$8@RunnerToolbar" count="2" />
       <entry action="com.intellij.execution.ui.layout.actions.RestoreViewAction@DebuggerToolbar" count="1" />
-      <entry action="com.intellij.find.SearchTextArea$ClearAction@unknown" count="2" />
-      <entry action="com.intellij.find.editorHeaderActions.NextOccurrenceAction@EditorToolbar" count="20" />
-      <entry action="com.intellij.find.editorHeaderActions.PrevOccurrenceAction@EditorToolbar" count="7" />
+      <entry action="com.intellij.find.SearchTextArea$ClearAction@unknown" count="13" />
+      <entry action="com.intellij.find.SearchTextArea$NewLineAction@unknown" count="3" />
+      <entry action="com.intellij.find.editorHeaderActions.NextOccurrenceAction@EditorToolbar" count="47" />
+      <entry action="com.intellij.find.editorHeaderActions.PrevOccurrenceAction@EditorToolbar" count="14" />
       <entry action="com.intellij.ide.browsers.actions.BaseWebBrowserAction@ContextToolbar" count="2" />
       <entry action="com.intellij.notification.EventLogToolWindowFactory$ToggleSoftWraps@EventLog" count="2" />
-      <entry action="com.intellij.ui.AnActionButton$AnActionButtonWrapper@ToolbarDecorator" count="1" />
+      <entry action="com.intellij.openapi.roots.ui.configuration.actions.ToggleSourcesStateAction@ProjectStructureContentEntries" count="12" />
+      <entry action="com.intellij.ui.AnActionButton$AnActionButtonWrapper@ToolbarDecorator" count="3" />
+      <entry action="com.intellij.ui.CommonActionsPanel$MyActionButton@ToolbarDecorator" count="1" />
+      <entry action="com.intellij.ui.navigation.BackAction@ProjectStructure" count="2" />
     </counts>
   </component>
 </application>
