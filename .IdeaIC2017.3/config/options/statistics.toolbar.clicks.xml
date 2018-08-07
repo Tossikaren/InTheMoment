@@ -2,6 +2,7 @@
   <component name="ToolbarClicksCollector">
     <counts>
       <entry action="CheckinProject@ChangesViewToolbar" count="2" />
+      <entry action="CheckinProject@NavBarToolbar" count="1" />
       <entry action="CompileDirty@NavBarToolbar" count="42" />
       <entry action="Coverage@NavBarToolbar" count="1" />
       <entry action="Debug@NavBarToolbar" count="4" />

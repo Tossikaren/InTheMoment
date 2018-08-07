@@ -20,7 +20,7 @@
       <entry action="BuildArtifact" count="5" />
       <entry action="ChangeSignature" count="1" />
       <entry action="CheckinFiles" count="1" />
-      <entry action="CheckinProject" count="15" />
+      <entry action="CheckinProject" count="16" />
       <entry action="ChooseRunConfiguration" count="8" />
       <entry action="CollapseAllRegions" count="3" />
       <entry action="CollapseRegion" count="3" />
@@ -47,7 +47,7 @@
       <entry action="EditorEnter" count="1640" />
       <entry action="EditorEscape" count="14" />
       <entry action="EditorIndentSelection" count="32" />
-      <entry action="EditorLeft" count="2713" />
+      <entry action="EditorLeft" count="2714" />
       <entry action="EditorLineEnd" count="13" />
       <entry action="EditorLineStart" count="8" />
       <entry action="EditorPageDown" count="1" />
@@ -121,7 +121,7 @@
       <entry action="ToggleDistractionFreeMode" count="2" />
       <entry action="ToggleLineBreakpoint" count="15" />
       <entry action="UnmarkRoot" count="1" />
-      <entry action="Vcs.Push" count="16" />
+      <entry action="Vcs.Push" count="17" />
       <entry action="Vcs.QuickListPopupAction" count="1" />
       <entry action="Vcs.UpdateProject" count="1" />
       <entry action="ViewToolButtons" count="1" />
