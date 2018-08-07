@@ -15,21 +15,24 @@
       <entry path="File -&gt; New -&gt; Project..." count="12" />
       <entry path="File -&gt; Open Recent -&gt; Reopen Project" count="4" />
       <entry path="File -&gt; Open..." count="16" />
-      <entry path="File -&gt; Project Structure..." count="33" />
+      <entry path="File -&gt; Other Settings -&gt; Default Settings..." count="1" />
+      <entry path="File -&gt; Project Structure..." count="34" />
       <entry path="File -&gt; Save All" count="9" />
-      <entry path="File -&gt; Settings..." count="12" />
+      <entry path="File -&gt; Settings..." count="15" />
       <entry path="Help -&gt; About" count="1" />
       <entry path="Help -&gt; Help" count="1" />
       <entry path="Run -&gt; Run" count="13" />
       <entry path="Run -&gt; Run..." count="8" />
       <entry path="VCS -&gt; Checkout from Version Control -&gt; GitHub" count="1" />
-      <entry path="VCS -&gt; Commit" count="13" />
+      <entry path="VCS -&gt; Commit" count="14" />
       <entry path="VCS -&gt; Git -&gt; Commit File" count="1" />
-      <entry path="VCS -&gt; Git -&gt; Push..." count="13" />
-      <entry path="VCS -&gt; Import into Version Control -&gt; Import into CVS..." count="3" />
-      <entry path="VCS -&gt; Import into Version Control -&gt; Share Project on GitHub" count="3" />
+      <entry path="VCS -&gt; Git -&gt; Push..." count="15" />
+      <entry path="VCS -&gt; Git -&gt; Remotes..." count="1" />
+      <entry path="VCS -&gt; Import into Version Control -&gt; Create Git Repository..." count="1" />
+      <entry path="VCS -&gt; Import into Version Control -&gt; Import into CVS..." count="4" />
+      <entry path="VCS -&gt; Import into Version Control -&gt; Share Project on GitHub" count="4" />
       <entry path="VCS -&gt; Update Project" count="1" />
-      <entry path="VCS -&gt; VCS Operations Popup..." count="1" />
+      <entry path="VCS -&gt; VCS Operations Popup..." count="3" />
       <entry path="View -&gt; Quick Documentation" count="1" />
       <entry path="View -&gt; Toggle Distraction Free mode" count="2" />
       <entry path="View -&gt; Tool Buttons" count="1" />

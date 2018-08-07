@@ -1,6 +1,7 @@
 <application>
   <component name="ToolbarClicksCollector">
     <counts>
+      <entry action="ChangesView.Move@ChangesBrowser" count="1" />
       <entry action="CheckinProject@ChangesViewToolbar" count="2" />
       <entry action="CheckinProject@NavBarToolbar" count="1" />
       <entry action="CompileDirty@NavBarToolbar" count="42" />
@@ -26,7 +27,7 @@
       <entry action="com.intellij.notification.EventLogToolWindowFactory$ToggleSoftWraps@EventLog" count="2" />
       <entry action="com.intellij.openapi.roots.ui.configuration.actions.ToggleSourcesStateAction@ProjectStructureContentEntries" count="12" />
       <entry action="com.intellij.ui.AnActionButton$AnActionButtonWrapper@ToolbarDecorator" count="3" />
-      <entry action="com.intellij.ui.CommonActionsPanel$MyActionButton@ToolbarDecorator" count="1" />
+      <entry action="com.intellij.ui.CommonActionsPanel$MyActionButton@ToolbarDecorator" count="3" />
       <entry action="com.intellij.ui.navigation.BackAction@ProjectStructure" count="2" />
     </counts>
   </component>

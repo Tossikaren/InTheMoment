@@ -19,8 +19,9 @@
       <entry action="Bind parameters to fields" count="1" />
       <entry action="BuildArtifact" count="5" />
       <entry action="ChangeSignature" count="1" />
+      <entry action="ChangesView.Move" count="1" />
       <entry action="CheckinFiles" count="1" />
-      <entry action="CheckinProject" count="16" />
+      <entry action="CheckinProject" count="17" />
       <entry action="ChooseRunConfiguration" count="8" />
       <entry action="CollapseAllRegions" count="3" />
       <entry action="CollapseRegion" count="3" />
@@ -35,12 +36,12 @@
       <entry action="Create Test" count="7" />
       <entry action="Create method from usage" count="2" />
       <entry action="Create property From Usage" count="1" />
-      <entry action="Cvs.Import" count="3" />
+      <entry action="Cvs.Import" count="4" />
       <entry action="Debug" count="4" />
       <entry action="EditSource" count="1" />
       <entry action="EditorBackSpace" count="7536" />
       <entry action="EditorChooseLookupItem" count="2100" />
-      <entry action="EditorCopy" count="587" />
+      <entry action="EditorCopy" count="588" />
       <entry action="EditorCut" count="7" />
       <entry action="EditorDelete" count="983" />
       <entry action="EditorDown" count="1562" />
@@ -65,7 +66,9 @@
       <entry action="Generate" count="61" />
       <entry action="Generate missed test methods" count="1" />
       <entry action="Git.Add" count="6" />
-      <entry action="Github.Share" count="3" />
+      <entry action="Git.Configure.Remotes" count="1" />
+      <entry action="Git.Init" count="1" />
+      <entry action="Github.Share" count="4" />
       <entry action="GotoBookmark7" count="1" />
       <entry action="GuiDesigner.CreateComponent" count="1" />
       <entry action="GuiDesigner.CreateListener" count="8" />
@@ -112,17 +115,18 @@
       <entry action="SaveAll" count="12" />
       <entry action="ShowFilePath" count="1" />
       <entry action="ShowIntentionActions" count="115" />
-      <entry action="ShowProjectStructureSettings" count="33" />
-      <entry action="ShowSettings" count="14" />
+      <entry action="ShowProjectStructureSettings" count="34" />
+      <entry action="ShowSettings" count="17" />
       <entry action="Stop" count="4" />
       <entry action="StructuralSearchPlugin.StructuralReplaceAction" count="1" />
       <entry action="SynchronizeCurrentFile" count="1" />
+      <entry action="TemplateProjectProperties" count="1" />
       <entry action="ToggleBookmark7" count="1" />
       <entry action="ToggleDistractionFreeMode" count="2" />
       <entry action="ToggleLineBreakpoint" count="15" />
       <entry action="UnmarkRoot" count="1" />
-      <entry action="Vcs.Push" count="17" />
-      <entry action="Vcs.QuickListPopupAction" count="1" />
+      <entry action="Vcs.Push" count="19" />
+      <entry action="Vcs.QuickListPopupAction" count="3" />
       <entry action="Vcs.UpdateProject" count="1" />
       <entry action="ViewToolButtons" count="1" />
     </counts>
