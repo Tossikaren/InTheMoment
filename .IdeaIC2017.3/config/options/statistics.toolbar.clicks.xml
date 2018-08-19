@@ -27,7 +27,7 @@
       <entry action="com.intellij.ide.browsers.actions.BaseWebBrowserAction@ContextToolbar" count="2" />
       <entry action="com.intellij.notification.EventLogToolWindowFactory$ToggleSoftWraps@EventLog" count="2" />
       <entry action="com.intellij.openapi.roots.ui.configuration.actions.ToggleSourcesStateAction@ProjectStructureContentEntries" count="12" />
-      <entry action="com.intellij.openapi.vcs.changes.ui.ChangesTree$ToggleShowDirectoriesAction@ChangesBrowser" count="1" />
+      <entry action="com.intellij.openapi.vcs.changes.ui.ChangesTree$ToggleShowDirectoriesAction@ChangesBrowser" count="2" />
       <entry action="com.intellij.ui.AnActionButton$AnActionButtonWrapper@ToolbarDecorator" count="4" />
       <entry action="com.intellij.ui.CommonActionsPanel$MyActionButton@ToolbarDecorator" count="3" />
       <entry action="com.intellij.ui.navigation.BackAction@ProjectStructure" count="2" />
