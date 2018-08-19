@@ -152,7 +152,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="2938f" class="javax.swing.JTextPane" binding="photoDescriptionTextField">
+              <component id="2938f" class="javax.swing.JTextPane" binding="momentDescriptionTextField">
                 <constraints/>
                 <properties>
                   <autoscrolls value="false"/>

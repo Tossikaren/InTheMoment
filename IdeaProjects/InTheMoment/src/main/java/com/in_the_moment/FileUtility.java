@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
@@ -24,17 +26,17 @@ public interface FileUtility{
         return arrayList;
     }
 
-    default ArrayList<String> directoryFileReader(File directoryPath) {
-        ArrayList<String> arrayList = new ArrayList<>();
+    default Set<String> directoryFileReader(File directoryPath) {
+        Set<String> hashSet = new HashSet<>();
         if(directoryPath.isDirectory()) {
             File[] filesInDirectory = directoryPath.listFiles();
             if (filesInDirectory != null) {
                 for (final File fileInDirectory : filesInDirectory) {
-                    arrayList.add(fileInDirectory.getName());
+                    hashSet.add(fileInDirectory.getName());
                 }
             }
         }
-        return arrayList;
+        return hashSet;
     }
 
     default void copyFileToDirectory(Path copyFromDirectoryPath, Path copyToDirectoryPath) {
